@@ -3,12 +3,12 @@ import AOS from 'aos';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// Initialize EmailJS (replace with your public key from emailjs.com)
-const EMAILJS_PUBLIC_KEY = 'qfVArKhjZeDZ8vvHa';
-const EMAILJS_SERVICE_ID = 'service_m69m55e';
-const EMAILJS_TEMPLATE_ID = 'template_aerjz5r';
+// Initialize EmailJS with environment variables
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE') {
+if (EMAILJS_PUBLIC_KEY) {
   emailjs.init(EMAILJS_PUBLIC_KEY);
 }
 
