@@ -13,7 +13,7 @@ if (document.readyState === 'loading') {
       once: false,
       mirror: true,
       offset: 100,
-      disable: 'phone',
+      disable: false,
       easing: 'ease-in-out',
     })
   })
@@ -23,7 +23,7 @@ if (document.readyState === 'loading') {
     once: false,
     mirror: true,
     offset: 100,
-    disable: 'phone',
+    disable: false,
     easing: 'ease-in-out',
   })
 }
