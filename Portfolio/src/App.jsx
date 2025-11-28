@@ -1,0 +1,32 @@
+import { lazy, Suspense } from 'react';
+import './App.css';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+
+// Lazy load components for better initial load
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Loading component
+const Loading = () => <div className="min-h-screen bg-slate-950"></div>;
+
+function App() {
+  return (
+    <div className="bg-slate-950 text-white">
+      <Navbar />
+      <Hero />
+      <Suspense fallback={<Loading />}>
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;

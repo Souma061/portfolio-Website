@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumabrata Ghosh - Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      color: #0ea5e9;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+    }
+
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.9em;
+    }
+
+    .social-links a {
+      color: #0ea5e9;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #1e40af;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0ea5e9;
+    }
+
+    h3 {
+      font-size: 1.1em;
+      color: #1e293b;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .job-title {
+      color: #0ea5e9;
+      font-weight: 600;
+    }
+
+    .date {
+      color: #666;
+      font-style: italic;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-category h3 {
+      color: #0ea5e9;
+      margin-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .skill-category li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .skill-category li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0ea5e9;
+      font-weight: bold;
+    }
+
+    .project {
+      background-color: #f9fafb;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #0ea5e9;
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+
+    .project-tech {
+      color: #0ea5e9;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      color: #0ea5e9;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .education-item {
+      background-color: #f9fafb;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #0ea5e9;
+    }
+
+    .education-item h3 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+
+    .print-button {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .print-button button {
+      background-color: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .print-button button:hover {
+      background-color: #0284c7;
+    }
+
+    @media print {
+      body {
+        background-color: white;
+      }
+
+      .container {
+        box-shadow: none;
+        margin: 0;
+      }
+
+      .print-button {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .social-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="print-button">
+    <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>SOUMABRATA GHOSH</h1>
+      <p class="subtitle">Full-Stack Web Developer | MERN Stack | API Development & Cloud Integration</p>
+      <div class="contact-info">
+        <span>📍 Howrah, West Bengal</span>
+        <span>📧 soumabrataghosh57@gmail.com</span>
+        <span>📞 8240207556</span>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/Souma061" target="_blank">🔗 GitHub: Souma061</a>
+        <a href="https://www.linkedin.com/in/soumabrata-ghosh-85862530b/" target="_blank">💼 LinkedIn: Soumabrata
+          Ghosh</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>PROFESSIONAL SUMMARY</h2>
+      <p>Enthusiastic Full-Stack Developer skilled in the MERN stack with hands-on experience building secure, scalable
+        web applications. Passionate about problem-solving, clean code, and creating meaningful user experiences.
+        Seeking growth opportunities to apply technical skills and collaborate with dynamic teams on innovative
+        projects.</p>
+    </section>
+
+    <section>
+      <h2>PROJECTS</h2>
+
+      <div class="project">
+        <h3>Full-Stack Blog Sharing Platform</h3>
+        <p class="project-tech">Technologies: React.js, Redux, Tailwind CSS, Appwrite</p>
+        <p class="project-desc">A modern blogging platform where users can create, share, and manage blog posts. Built
+          with React for dynamic UI, Redux for state management, and Appwrite as the backend service.</p>
+        <div class="project-links">
+          <a href="https://github.com/Souma061/Blog-App" target="_blank">📂 GitHub Repository</a>
+          <a href="https://postmee-123.vercel.app/" target="_blank">🌐 Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>LinguaChat - Real-Time Multilingual Chat Platform</h3>
+        <p class="project-tech">Technologies: React.js, Node.js, Express.js, MongoDB, Socket.io, Lingo.dev AI</p>
+        <p class="project-desc">A real-time multilingual chat application enabling users speaking different languages to
+          communicate seamlessly. Features automatic message translation using AI, real-time messaging with Socket.IO,
+          and MongoDB database for persistent storage.</p>
+        <div class="project-links">
+          <a href="https://github.com/Souma061/LinguaChat" target="_blank">📂 GitHub Repository</a>
+          <a href="https://linguachat-dva1.onrender.com/" target="_blank">🌐 Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>EXPERIENCE</h2>
+
+      <h3><span class="job-title">Freelance Web Developer</span></h3>
+      <p class="date">2025 - Present</p>
+      <ul>
+        <li>Designed and built responsive landing pages and small business websites using React.js and Node.js</li>
+        <li>Collaborated with clients to understand requirements and customize features based on UI/UX feedback</li>
+        <li>Managed version control and deployment processes via GitHub and hosting platforms</li>
+        <li>Implemented modern web technologies to ensure optimal performance and user experience</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages & Frontend</h3>
+          <ul>
+            <li>JavaScript (ES6+)</li>
+            <li>HTML5 & CSS3</li>
+            <li>React.js</li>
+            <li>React Hooks</li>
+            <li>Redux</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Backend & Database</h3>
+          <ul>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>MongoDB</li>
+            <li>REST APIs</li>
+            <li>JWT Authentication</li>
+            <li>Socket.io</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Tools & Cloud</h3>
+          <ul>
+            <li>Git & GitHub</li>
+            <li>Cloudinary</li>
+            <li>Appwrite</li>
+            <li>Multer</li>
+            <li>Jest & Supertest</li>
+            <li>Zod (Validation)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>EDUCATION</h2>
+      <div class="education-item">
+        <h3>Bachelor of Science (Honors) in Computer Science</h3>
+        <p class="date">Narasinha Dutt College, Howrah, West Bengal</p>
+        <p class="date">📅 August 2024 – August 2028 (Expected)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>ABOUT ME</h2>
+      <ul>
+        <li><strong>Problem Solving:</strong> Strong analytical skills with a passion for writing clean, efficient code
+        </li>
+        <li><strong>User Experience:</strong> Committed to creating intuitive and responsive web applications</li>
+        <li><strong>Continuous Learning:</strong> Always exploring new technologies and best practices in web
+          development</li>
+        <li><strong>Collaboration:</strong> Experience working with clients and teams on collaborative projects</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    // Optional: Uncomment to auto-print on page load
+    // window.print();
+  </script>
+</body>
+
+</html>

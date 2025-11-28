@@ -1,0 +1,37 @@
+Soumabrata Ghosh
+Full-Stack Web Developer | MERN Stack | API Development & Cloud Integration
+📍 Howrah, West Bengal | 📧 soumabrataghosh57@gmail.com | 📞 8240207556
+🔗 GitHub: https://github.com/Souma061 | LinkedIn: https://www.linkedin.com/in/soumabrata-ghosh-85862530b/
+________________________________________
+Professional Summary
+Enthusiastic Full-Stack Developer skilled in the MERN stack with hands-on experience building secure, scalable web applications. Passionate about problem-solving, clean code, and creating meaningful user experiences. Seeking an entry-level developer role to apply my technical skills and grow with a dynamic team.
+________________________________________
+Projects
+•	Full-stack Blog sharing platform | React.js, Redux, Apwrite
+Your modern blogging playground built with React, Tailwind CSS, and Appwrite.
+🔗 GitHub: [https://github.com/Souma061/Blog-App]
+🔗 Live link: [https://postmee-123.vercel.app/]
+
+•	LinguaChat | React.js, Node.js, Express.js, MongoDB, Socket.io
+LinguaChat is a real-time multilingual chat platform. Built with Node.js, Express, Socket.IO, and Lingo.dev AI Translation, it enables people speaking different languages to chat in the same room with automatic message translation.
+🔗 GitHub: [https://github.com/Souma061/LinguaChat]
+🔗 Live link: [https://linguachat-dva1.onrender.com/]
+________________________________________
+Freelance Experience
+Freelance Web Developer | 2025
+Built responsive landing pages and small business websites using React.js and Node.js.
+Collaborated with clients to customize features and improve UI/UX design.
+Managed version control and deployment via GitHub.
+________________________________________
+Education
+Bachelor of Science (Honors) in Computer Science
+Narasinha Dutt College, Howrah, West Bengal
+📅 August 2024 – August 2028 (Expected)
+________________________________________
+Technical Skills
+Languages: JavaScript (ES6+), HTML5, CSS3
+Frontend: React.js, React Hooks, Tailwind CSS
+Backend: Node.js, Express.js
+Database: MongoDB
+Tools & Tech: Git, GitHub, REST APIs, JWT, Cloudinary, Multer, Jest, Supertest, Zod
+
