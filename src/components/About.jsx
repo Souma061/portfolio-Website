@@ -84,7 +84,7 @@ export default function About() {
             <div className="grid grid-cols-2 gap-4 pt-6">
               <div className="bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-lg p-4 hover:border-blue-500/50 transition-colors duration-300" data-aos="zoom-in" data-aos-delay="100">
                 <h4 className="text-white font-semibold mb-2 text-sm">Projects Completed</h4>
-                <p className="text-2xl sm:text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">25+</p>
+                <p className="text-2xl sm:text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">5+</p>
               </div>
               <div className="bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-lg p-4 hover:border-blue-500/50 transition-colors duration-300" data-aos="zoom-in" data-aos-delay="200">
                 <h4 className="text-white font-semibold mb-2 text-sm">Experience</h4>
