@@ -205,26 +205,27 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Tell me about your project..."
                   rows="5"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300 resize-none"
-                required
-              ></textarea>
-            </div>
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300 resize-none"
+                  required
+                ></textarea>
+              </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`px-5 py-2 rounded-lg text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${
-                isSubmitting
-                  ? 'bg-slate-600 cursor-not-allowed opacity-75'
-                  : 'bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/50 hover:scale-105'
-              }`}
-            >
-              <Send size={16} />
-              <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-            </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`px-5 py-2 rounded-lg text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${
+                  isSubmitting
+                    ? 'bg-slate-600 cursor-not-allowed opacity-75'
+                    : 'bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/50 hover:scale-105'
+                }`}
+              >
+                <Send size={16} />
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+              </button>
             </form>
           </div>
         </div>
+      </div>
     </section>
   );
 }
