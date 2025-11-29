@@ -73,6 +73,11 @@ export default function Contact() {
         message: 'Failed to send message. Please try again later.',
       });
       console.error('Email error:', error);
+      console.error('Error details:', {
+        status: error.status,
+        text: error.text,
+        message: error.message,
+      });
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus(null), 5000);
