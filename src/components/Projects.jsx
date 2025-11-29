@@ -33,7 +33,7 @@ export default function Projects() {
       year: '2025',
       title: 'Stellarium - Modern Astrology Website',
       description: 'A modern, elegant astrology website that brings the mysteries of the cosmos to your fingertips. Stellarium offers personalized horoscope readings, celestial insights, and astrological guidance in a beautifully crafted digital experience.',
-      technologies: ['React.js', 'Tailwind CSS', 'Vercel'],
+      technologies: ['HTML5', 'CSS3', 'JavaScript'],
       status: 'completed',
       github: 'https://github.com/Souma061/Stellarium',
       live: 'https://stellarium-ecru.vercel.app/',

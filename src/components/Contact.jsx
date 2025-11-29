@@ -226,13 +226,13 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 rounded-lg text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${
+              className={`px-5 py-2 rounded-lg text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${
                 isSubmitting
                   ? 'bg-slate-600 cursor-not-allowed opacity-75'
                   : 'bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/50 hover:scale-105'
               }`}
             >
-              <Send size={18} className="sm:size-20" />
+              <Send size={16} />
               <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
             </button>
           </form>
