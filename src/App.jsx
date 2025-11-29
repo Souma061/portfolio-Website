@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import './App.css';
-import Loading from './components/Loading';
 import Hero from './components/Hero';
+import Loading from './components/Loading';
 import Navbar from './components/Navbar';
 
 // Lazy load components for better initial load

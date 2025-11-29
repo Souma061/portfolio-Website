@@ -25,10 +25,10 @@ export default function Loading() {
         <div className="relative w-20 h-20">
           {/* Outer rotating circle */}
           <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-blue-400 border-r-cyan-400 animate-spin"></div>
-          
+
           {/* Middle rotating circle - opposite direction */}
           <div className="absolute inset-2 rounded-full border-2 border-transparent border-b-blue-400 border-l-cyan-400 animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
-          
+
           {/* Inner pulsing circle */}
           <div className="absolute inset-4 rounded-full bg-linear-to-r from-blue-500/30 to-cyan-500/30 animate-pulse"></div>
         </div>
