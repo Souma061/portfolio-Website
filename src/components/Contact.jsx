@@ -1,15 +1,6 @@
-import emailjs from '@emailjs/browser';
 import AOS from 'aos';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-
-if (EMAILJS_PUBLIC_KEY) {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -39,45 +30,34 @@ export default function Contact() {
     setSubmitStatus(null);
 
     try {
-      if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY_HERE') {
-        setSubmitStatus({
-          type: 'error',
-          message: 'Email service not configured. Please configure EmailJS keys in Contact.jsx',
-        });
-        console.log('Demo - Form would send:', formData);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setIsSubmitting(false);
-        return;
-      }
-
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          to_email: 'your-email@example.com',
-          from_name: formData.name,
-          from_email: formData.email,
+      const response = await fetch('https://formspree.io/f/xyzabc123', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject,
           message: formData.message,
-        }
-      );
-
-      setSubmitStatus({
-        type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon.',
+        }),
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Message sent successfully! I\'ll get back to you soon.',
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send');
+      }
     } catch (error) {
       setSubmitStatus({
         type: 'error',
         message: 'Failed to send message. Please try again later.',
       });
-      console.error('Email error:', error);
-      console.error('Error details:', {
-        status: error.status,
-        text: error.text,
-        message: error.message,
-      });
+      console.error('Form error:', error);
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus(null), 5000);
