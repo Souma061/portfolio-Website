@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import './App.css';
+import Loading from './components/Loading';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 
@@ -10,15 +11,13 @@ const Projects = lazy(() => import('./components/Projects'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 
-// Loading component
-const Loading = () => <div className="min-h-screen bg-slate-950"></div>;
-
 function App() {
   return (
     <div className="bg-slate-950 text-white">
+      <Loading />
       <Navbar />
       <Hero />
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<div className="min-h-screen bg-slate-950"></div>}>
         <About />
         <Skills />
         <Projects />
