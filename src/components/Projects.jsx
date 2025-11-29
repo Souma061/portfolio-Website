@@ -20,7 +20,7 @@ export default function Projects() {
     },
     {
       id: 2,
-      year: '2025',
+      year: '2025(Ongoing)',
       title: 'LinguaChat - Real-Time Multilingual Chat Platform',
       description: 'A real-time multilingual chat application enabling users speaking different languages to communicate seamlessly. Features automatic message translation using AI, real-time messaging with Socket.IO, and MongoDB database for persistent storage.',
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Lingo.dev AI'],
