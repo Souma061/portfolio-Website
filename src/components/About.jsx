@@ -74,17 +74,17 @@ export default function About() {
           {/* Content */}
           <div className="space-y-6" data-aos="fade-left" data-aos-duration="800">
             <p className="text-lg text-slate-300 leading-relaxed">
-              I'm a Full-Stack Developer passionate about building complete web solutions from the ground up. With expertise in MERN stack and modern web technologies, I create seamless experiences that work flawlessly on both frontend and backend.
+              I'm a Backend Enthusiast passionate about building robust, scalable server-side solutions. With strong expertise in Node.js, Express.js, MongoDB, and the MERN stack, I create efficient APIs and databases that power modern applications.
             </p>
 
             <p className="text-lg text-slate-300 leading-relaxed">
-              My journey in web development started with curiosity about how things work. Since then, I've mastered full-stack development, API design, database management, and creating scalable applications that solve real-world problems.
+              My focus is on backend development, database optimization, API design, and system architecture. I love solving complex problems with clean code, implementing best practices, and building applications that are fast, secure, and maintainable at scale.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-6">
               <div className="bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-lg p-4 hover:border-blue-500/50 transition-colors duration-300" data-aos="zoom-in" data-aos-delay="100">
-                <h4 className="text-white font-semibold mb-2 text-sm">Projects Completed</h4>
-                <p className="text-2xl sm:text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">5+</p>
+                <h4 className="text-white font-semibold mb-2 text-sm">Projects Built</h4>
+                <p className="text-2xl sm:text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">3+</p>
               </div>
               <div className="bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-lg p-4 hover:border-blue-500/50 transition-colors duration-300" data-aos="zoom-in" data-aos-delay="200">
                 <h4 className="text-white font-semibold mb-2 text-sm">Experience</h4>

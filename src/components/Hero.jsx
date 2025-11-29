@@ -37,8 +37,8 @@ export default function Hero() {
         </h1>
 
         <p className="text-base sm:text-lg lg:text-xl text-slate-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-          Crafting beautiful, responsive web experiences with modern technologies.
-          Specializing in React, JavaScript, and UI/UX design.
+          Building scalable, efficient backend systems and full-stack applications.
+          Specializing in Node.js, Express, MongoDB, and MERN stack development.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 flex-wrap px-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
