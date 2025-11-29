@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Loading from './components/Loading';
 import Navbar from './components/Navbar';
 
-// Lazy load components for better initial load
 const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
 const Projects = lazy(() => import('./components/Projects'));

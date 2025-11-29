@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// Initialize AOS with optimized settings
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     AOS.init({

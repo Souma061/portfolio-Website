@@ -3,7 +3,6 @@ import AOS from 'aos';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// Initialize EmailJS with environment variables
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -40,7 +39,6 @@ export default function Contact() {
     setSubmitStatus(null);
 
     try {
-      // Check if EmailJS is properly configured
       if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY_HERE') {
         setSubmitStatus({
           type: 'error',
@@ -52,12 +50,11 @@ export default function Contact() {
         return;
       }
 
-      // Send email using EmailJS
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          to_email: 'your-email@example.com', // Replace with your email
+          to_email: 'your-email@example.com',
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
@@ -98,7 +95,6 @@ export default function Contact() {
         </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {/* Email Card */}
           <div
             className="bg-slate-900 p-6 sm:p-8 rounded-lg border border-slate-800 hover:border-blue-500 transition-colors"
             data-aos="fade-up"
@@ -110,7 +106,6 @@ export default function Contact() {
             <p className="text-slate-400 text-sm sm:text-base break-all">soumabrataghosh57@gmail.com</p>
           </div>
 
-          {/* Phone Card */}
           <div
             className="bg-slate-900 p-6 sm:p-8 rounded-lg border border-slate-800 hover:border-cyan-500 transition-colors"
             data-aos="fade-up"
@@ -122,7 +117,6 @@ export default function Contact() {
             <p className="text-slate-400 text-sm sm:text-base">+1 (555) 123-4567</p>
           </div>
 
-          {/* Location Card */}
           <div
             className="bg-slate-900 p-6 sm:p-8 rounded-lg border border-slate-800 hover:border-purple-500 transition-colors"
             data-aos="fade-up"
@@ -135,94 +129,87 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Contact Form */}
         <div className="bg-linear-to-br from-slate-800/30 to-slate-900/30 border border-slate-700/50 rounded-lg p-6 sm:p-8 md:p-12">
-                  <div className="w-full max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-            {/* Status Message */}
-            {submitStatus && (
-              <div
-                className={`p-4 rounded-lg mb-6 ${
-                  submitStatus.type === 'success'
-                    ? 'bg-green-500/20 border border-green-500/50 text-green-400'
-                    : 'bg-red-500/20 border border-red-500/50 text-red-400'
-                }`}
-              >
-                {submitStatus.message}
-              </div>
-            )}
+          <div className="w-full max-w-2xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+              {submitStatus && (
+                <div
+                  className={`p-4 rounded-lg mb-6 ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-500/20 border border-green-500/50 text-green-400'
+                      : 'bg-red-500/20 border border-red-500/50 text-red-400'
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {/* Name Input */}
-              <div>
-                <label htmlFor="name" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
-                  required
-                />
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
+                    required
+                  />
+                </div>
               </div>
 
-              {/* Email Input */}
               <div>
-                <label htmlFor="email" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
-                  Your Email
+                <label htmlFor="subject" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
+                  Subject
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="Project Discussion"
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
                   required
                 />
               </div>
-            </div>
 
-            {/* Subject Input */}
-            <div>
-              <label htmlFor="subject" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="Project Discussion"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
-                required
-              />
-            </div>
-
-            {/* Message Input */}
-            <div>
-              <label htmlFor="message" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell me about your project..."
-                rows="5"
+              <div>
+                <label htmlFor="message" className="block text-white font-medium mb-2 sm:mb-3 text-sm sm:text-base">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project..."
+                  rows="5"
                 className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300 resize-none"
                 required
               ></textarea>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -235,10 +222,9 @@ export default function Contact() {
               <Send size={16} />
               <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
             </button>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
     </section>
   );
 }

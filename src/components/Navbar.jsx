@@ -21,7 +21,6 @@ export default function Navbar() {
     setActiveSection(href.substring(1));
   };
 
-  // Update active section on scroll
   useEffect(() => {
     const handleScrollEvent = () => {
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
@@ -45,14 +44,12 @@ export default function Navbar() {
     <nav className="fixed w-full bg-linear-to-b from-slate-900 via-slate-900 to-transparent backdrop-blur-md z-50 border-b border-slate-700/50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div className="shrink-0">
             <a href="#home" className="text-xl sm:text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-cyan-300 transition-all duration-300">
               Soumabrata
             </a>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const sectionId = link.href.substring(1);
@@ -75,7 +72,6 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <a
               href="#contact"
@@ -86,7 +82,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -98,7 +93,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-slate-900 border-t border-slate-700/50">
           <div className="px-2 pt-2 pb-3 space-y-1">
