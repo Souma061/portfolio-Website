@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full bg-linear-to-b from-slate-900 via-slate-900 to-transparent backdrop-blur-md z-50 border-b border-slate-700/50 overflow-x-hidden">
-      <div className="w-full px-2 sm:px-6 lg:px-8">
+      <div className="w-full px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 min-h-16">
           <div className="shrink-0 min-w-fit">
             <a href="#home" className="text-base sm:text-xl lg:text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-cyan-300 transition-all duration-300 whitespace-nowrap">
