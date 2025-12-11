@@ -38,6 +38,16 @@ export default function Projects() {
       github: 'https://github.com/Souma061/Stellarium',
       live: 'https://stellarium-ecru.vercel.app/',
     },
+    {
+      id: 4,
+      year: '2025',
+      title: 'Metriq - Modern Unit Converter',
+      description: 'Metriq is a professional, high-performance unit conversion application built with modern web technologies. It offers a seamless user experience with real-time currency rates, instant search, and a beautiful responsive design.',
+      technologies: ['React.js', 'Tailwind', 'JavaScript'],
+      status: 'completed',
+      github: 'https://github.com/Souma061/Unit-Convertor',
+      live: 'https://convertmetriq.netlify.app/',
+    },
   ];
 
   return (
