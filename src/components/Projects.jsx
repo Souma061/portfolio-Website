@@ -46,7 +46,7 @@ export default function Projects() {
       technologies: ['React.js', 'Tailwind', 'JavaScript'],
       status: 'completed',
       github: 'https://github.com/Souma061/Unit-Convertor',
-      live: 'https://convertmetriq.netlify.app/',
+      live: 'https://unit-convertor-n1lp.vercel.app/',
     },
   ];
 
