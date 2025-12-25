@@ -48,6 +48,16 @@ export default function Projects() {
       github: 'https://github.com/Souma061/Unit-Convertor',
       live: 'https://unit-convertor-n1lp.vercel.app/',
     },
+    {
+      id: 5,
+      year: '2025',
+      title: 'Sonic Waves - 3D Audio Visualizer',
+      description: 'Sonic Waves is an immersive, interactive 3D audio visualization experience built with modern web technologies. It transforms your music or live audio into stunning, real-time visual landscapes using Three.js and React.',
+      technologies: ['React', 'Three.js', 'React Three Fiber', 'Tailwind CSS'],
+      status: 'completed',
+      github: 'https://github.com/Souma061/AudioVisuializer',
+      live: 'https://audio-visuializer.vercel.app/',
+    },
   ];
 
   return (
