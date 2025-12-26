@@ -1,41 +1,13 @@
 import AOS from 'aos';
-import { Code2, Database, Zap } from 'lucide-react';
 import { useEffect } from 'react';
+import { skillCategories, techStackIcons } from '../data/skills';
 
 export default function Skills() {
   useEffect(() => {
     AOS.refresh();
   }, []);
 
-  const techStackIcons = [
-    { name: 'HTML5', src: '/icons/html-5-svgrepo-com.svg' },
-    { name: 'CSS3', src: '/icons/css-3-svgrepo-com.svg' },
-    { name: 'JavaScript', src: '/icons/js-official-svgrepo-com.svg' },
-    { name: 'React', src: '/icons/react-svgrepo-com.svg' },
-    { name: 'Node.js', src: '/icons/nodejs-svgrepo-com.svg' },
-    { name: 'Express.js', src: '/icons/express.svg' },
-    { name: 'MongoDB', src: '/icons/mongodb-svgrepo-com.svg' },
-    { name: 'Postman', src: '/icons/postman-icon-svgrepo-com.svg' },
-    { name: 'VSCode', src: '/icons/vscode-svgrepo-com.svg' },
-  ];
-
-  const skillCategories = [
-    {
-      icon: Code2,
-      title: 'Frontend',
-      skills: ['React.js', 'JavaScript ES6+', 'Tailwind CSS', 'HTML5/CSS3'],
-    },
-    {
-      icon: Database,
-      title: 'Backend',
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'JWT Auth'],
-    },
-    {
-      icon: Zap,
-      title: 'Tools & Cloud',
-      skills: ['Git/GitHub', 'Postman', 'Cloudinary', 'Appwrite', 'Socket.io'],
-    },
-  ];
+  // Data imported from ../data/skills
 
   return (
     <section id="skills" className="py-20 bg-slate-800">

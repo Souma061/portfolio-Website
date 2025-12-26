@@ -24,13 +24,15 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-2 flex flex-col items-center lg:items-start lg:pt-8 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
             <div className="relative mb-6 w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
-              <div className="absolute -inset-6 bg-linear-to-r from-blue-500 via-cyan-500 to-blue-500 rounded-3xl opacity-15 blur-3xl animate-pulse"></div>
+              <div className="absolute -inset-6 bg-linear-to-r from-blue-500 via-cyan-500 to-blue-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
 
-              <img
-                src="/icons/Programmer-bro.svg"
-                alt="Developer Avatar"
-                className="relative w-full h-full rounded-3xl drop-shadow-2xl object-cover"
-              />
+              <div className="relative w-full h-full p-2 rounded-full border-2 border-blue-500/30 bg-slate-900/50 backdrop-blur-sm">
+                <img
+                  src="/profile.jpg"
+                  alt="Soumabrata Ghosh"
+                  className="w-full h-full rounded-full object-cover shadow-2xl shadow-blue-500/20"
+                />
+              </div>
             </div>
 
             <span className="px-6 py-2.5 rounded-full bg-blue-500 text-white text-xs sm:text-sm font-semibold shadow-lg">
@@ -51,7 +53,7 @@ export default function Hero() {
               <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-2">
                 <span className="block text-white">Soumabrata Ghosh</span>
                 <span className="block bg-linear-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent name-animate">
-                  Fullstack Developer
+                  Fullstack Developer | Backend Specialist
                 </span>
               </h1>
             </div>
@@ -76,7 +78,8 @@ export default function Hero() {
                 See My Work
               </a>
               <a
-                href="/resume.html"
+                href="/resume.pdf"
+                download="Soumabrata_Ghosh_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-2 border-slate-600 text-slate-300 font-semibold text-sm sm:text-base hover:border-slate-400 hover:text-white transition-all duration-300 hover:bg-slate-800/50 text-center"

@@ -1,6 +1,6 @@
 import AOS from 'aos';
-import { Facebook, Github, Linkedin, Twitter } from 'lucide-react';
 import { useEffect } from 'react';
+import { socialLinks } from '../data/socialLinks';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,12 +9,7 @@ export default function Footer() {
     AOS.refresh();
   }, []);
 
-  const socialLinks = [
-    { icon: Github, url: 'https://github.com/Souma061', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://www.linkedin.com/in/soumabrata-ghosh-85862530b/', label: 'LinkedIn' },
-    { icon: Twitter, url: 'https://x.com/SOUMABRATAGHOS4', label: 'Twitter' },
-    { icon: Facebook, url: 'https://www.facebook.com/soumabrata.ghosh.750', label: 'Facebook' },
-  ];
+
 
   return (
     <footer className="bg-slate-950 border-t border-slate-700/50">

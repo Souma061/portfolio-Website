@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 
 export default function Loading() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => !sessionStorage.getItem('portfolio_loaded'));
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        sessionStorage.setItem('portfolio_loaded', 'true');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
 
   if (!isVisible) return null;
 

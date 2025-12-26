@@ -30,7 +30,7 @@ export default function Contact() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formspree.io/f/xblvbble', {
+      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export default function Contact() {
           </p>
         </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           <div
             className="bg-slate-900 p-6 sm:p-8 rounded-lg border border-slate-800 hover:border-blue-500 transition-colors"
             data-aos="fade-up"
@@ -119,11 +119,10 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
               {submitStatus && (
                 <div
-                  className={`p-4 rounded-lg mb-6 ${
-                    submitStatus.type === 'success'
+                  className={`p-4 rounded-lg mb-6 ${submitStatus.type === 'success'
                       ? 'bg-green-500/20 border border-green-500/50 text-green-400'
                       : 'bg-red-500/20 border border-red-500/50 text-red-400'
-                  }`}
+                    }`}
                 >
                   {submitStatus.message}
                 </div>
@@ -137,11 +136,11 @@ export default function Contact() {
                   <input
                     type="text"
                     id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 transition-colors duration-300"
                     required
                   />
                 </div>
@@ -198,11 +197,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`px-5 py-2 rounded-lg text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${
-                  isSubmitting
+                className={`px-5 py-2 rounded-lg text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg transform ${isSubmitting
                     ? 'bg-slate-600 cursor-not-allowed opacity-75'
                     : 'bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/50 hover:scale-105'
-                }`}
+                  }`}
               >
                 <Send size={16} />
                 <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
