@@ -7,74 +7,102 @@ export default function Skills() {
     AOS.refresh();
   }, []);
 
-  // Data imported from ../data/skills
-
   return (
-    <section id="skills" className="py-20 bg-base">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="font-mono text-3xl sm:text-4xl text-white font-bold">
-              <span className="text-purple">const</span> skills = <span className="text-main">['Frontend', 'Backend', 'Tools']</span>;
-            </span>
-          </h2>
+    <section id="skills" className="py-24 bg-base relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px pointer-events-none]"></div>
 
+      <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-20 text-center" data-aos="fade-up" data-aos-duration="800">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <span className="text-white">Technical</span> <span className="text-purple">Arsenal</span>
+          </h2>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-mono text-gray-400">
+            <span className="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+            System Status: Optimal
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
+            // distinct styles for each index to add variety
+            const borderColors = [
+              'hover:border-purple/50',
+              'hover:border-cyan/50',
+              'hover:border-green/50'
+            ];
+            const iconColors = [
+              'text-purple',
+              'text-cyan',
+              'text-green'
+            ];
+            const bgGradients = [
+              'group-hover:from-purple/10',
+              'group-hover:from-cyan/10',
+              'group-hover:from-green/10'
+            ];
+
             return (
               <div
                 key={index}
-                className="group relative bg-mantle border border-surface0 rounded-2xl p-8 hover:border-purple/50 transition-all duration-300"
+                className={`group relative h-full bg-[#1e1e2e] rounded-3xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-white/5 ${borderColors[index]}`}
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
-                data-aos-duration="800"
+                data-aos-delay={index * 150}
               >
-                {/* Background gradient on hover */}
-                <div className="absolute inset-0 bg-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Internal Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent opacity-0 transition-opacity duration-500 ${bgGradients[index]}`}></div>
 
-                <div className="relative z-10">
-                  <div className="mb-6 inline-block p-3 bg-surface0 rounded-lg border border-surface1 group-hover:border-purple/30 transition-all duration-300">
-                    <Icon className="w-8 h-8 text-white group-hover:text-purple transition-colors" />
+                <div className="relative h-full bg-[#11111b] rounded-[22px] p-8 flex flex-col items-start gap-6 z-10">
+
+                  {/* Header: Icon & Title */}
+                  <div className="flex items-center gap-4 w-full border-b border-white/5 pb-6">
+                    <div className={`p-3 rounded-xl bg-white/5 ${iconColors[index]} ring-1 ring-white/10 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon size={32} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white tracking-tight">{category.title}</h3>
                   </div>
 
-                  <h3 className="text-xl font-bold text-orange mb-4">{category.title}</h3>
-
-                  <ul className="space-y-3">
-                    {category.skills.map((skill, skillIndex) => (
-                      <li key={skillIndex} className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green shadow-lg shadow-green/50"></span>
-                        <span className="text-subtext0 group-hover:text-subtext1 transition-colors duration-300 font-mono text-sm">
+                  {/* Skills List */}
+                  <div className="w-full space-y-4">
+                    {category.skills.map((skill, i) => (
+                      <div key={i} className="group/item flex items-center justify-between">
+                        <span className={`text-gray-400 font-medium group-hover/item:text-white transition-colors duration-300`}>
                           {skill}
                         </span>
-                      </li>
+                        <div className="h-[2px] w-12 bg-white/5 rounded-full overflow-hidden">
+                          <div className={`h-full w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-100 ${index === 0 ? 'bg-purple' : index === 1 ? 'bg-cyan' : 'bg-green'}`}></div>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Tech Stack Icons */}
-        <div className="mt-16" data-aos="fade-up" data-aos-duration="800">
-          <h3 className="text-lg font-mono text-subtext0 mb-8 text-center">&lt;TechStack /&gt;</h3>
-          <div className="flex flex-wrap gap-4 justify-center items-center bg-transparent">
+        {/* Tech Stack Marquee / Cloud */}
+        <div className="mt-20 pt-10 border-t border-white/5" data-aos="fade-up">
+          <p className="text-center text-gray-500 font-mono text-sm mb-10 tracking-widest uppercase">Technologies I work with</p>
+
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
             {techStackIcons.map((tech, index) => (
               <div
                 key={index}
-                className="group flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
+                className="group flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-2"
                 data-aos="zoom-in"
                 data-aos-delay={index * 50}
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-surface0 border border-surface1 group-hover:border-purple/50 flex items-center justify-center transition-all duration-300 p-3 hover:scale-110">
-                  <img src={tech.src} alt={tech.name} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/5 p-4 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 shadow-lg group-hover:shadow-purple/20">
+                  <img
+                    src={tech.src}
+                    alt={tech.name}
+                    className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  />
                 </div>
-                <span className="text-xs text-subtext0 group-hover:text-white text-center font-mono mt-2 transition-colors duration-300">
-                  {tech.name}
-                </span>
+                <span className="text-xs font-mono text-gray-500 group-hover:text-purple transition-colors">{tech.name}</span>
               </div>
             ))}
           </div>

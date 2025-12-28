@@ -1,18 +1,14 @@
 import AOS from 'aos';
-import { Check, ChevronDown, Copy, Github, Linkedin, Mail } from 'lucide-react';
+import { Check, Copy, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
+  const [activeTooltip, setActiveTooltip] = useState(null);
 
   useEffect(() => {
     AOS.refresh();
   }, []);
-
-  const handleScroll = (e) => {
-    e.preventDefault();
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText('npx soumabrata-dev');
@@ -20,65 +16,82 @@ export default function Hero() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-12 sm:pt-20 overflow-hidden">
-      <div className="absolute inset-0 bg-base">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-purple/10 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue/10 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan/10 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-700"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#1e1e2e]">
+
+      {/* Background Decor: diagonal lines (left) */}
+      <div className="absolute top-40 left-0 opacity-10 hidden lg:block">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <line x1="0" y1="100" x2="100" y2="0" stroke="white" strokeWidth="20" />
+          <line x1="40" y1="100" x2="140" y2="0" stroke="white" strokeWidth="20" />
+          <line x1="80" y1="100" x2="180" y2="0" stroke="white" strokeWidth="20" />
+        </svg>
       </div>
 
-      <div className="relative z-10 w-full px-3 sm:px-8 lg:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start lg:pt-8 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
-            <div className="relative mb-6 w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+      {/* Background Decor: circle (center-right) */}
+      <div className="absolute top-1/2 right-[10%] w-12 h-12 border-4 border-purple rounded-full opacity-50 hidden lg:block animate-pulse"></div>
 
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-              <div className="relative w-full h-full p-2 rounded-full border-2 border-blue/30 bg-mantle/50 backdrop-blur-sm">
-                <img
-                  src="/profile.jpg"
-                  alt="Soumabrata Ghosh"
-                  className="w-full h-full rounded-full object-cover shadow-2xl shadow-blue/20"
-                />
-              </div>
-            </div>
+          {/* Left Column: Text & Content */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8" data-aos="fade-right" data-aos-duration="1000">
 
-            <span className="px-6 py-2.5 rounded-full bg-surface0 border border-purple/20 text-purple text-xs sm:text-sm font-semibold shadow-lg shadow-purple/10">
-              Backend Dev
-            </span>
-          </div>
-
-          <div className="lg:col-span-3 space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2">
-            <div data-aos="fade-up" data-aos-duration="800">
-              <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-surface0 border border-green/20 text-green text-xs sm:text-sm font-medium">
-                <span className="inline-block w-2 h-2 bg-green rounded-full animate-pulse"></span>
-                <span className="hidden sm:inline">Available for freelance & opportunities</span>
-                <span className="sm:hidden">Available for opportunities</span>
-              </span>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold leading-tight mb-2 tracking-tight">
-                <span className="block text-white">Soumabrata</span>
-                <span className="block text-purple mt-2">
-                  Fullstack Dev.
-                </span>
+            {/* Typography */}
+            <div className="space-y-4">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tighter text-white">
+                Soumabrata
               </h1>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-purple tracking-tight">
+                Fullstack Dev.
+              </h2>
+              <p className="text-lg sm:text-xl text-subtext0 font-mono pt-4">
+                Building <span className="text-green">robust systems</span> with <span className="text-green">pixel-perfect UIs</span>.
+              </p>
             </div>
 
-            <p className="text-sm sm:text-lg lg:text-xl text-main leading-relaxed max-w-2xl font-mono" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-              Converts <span className="text-green font-bold">coffee</span> into <span className="text-green font-bold">code</span>. Specialized in building robust backends with <span className="text-cyan font-semibold">Node.js</span>.
-            </p>
+            {/* Social Icons Row */}
+            <div className="flex items-center gap-6 pt-2">
+              {[
+                { Icon: Github, href: "https://github.com/Souma061", tooltip: "My Code" },
+                { Icon: Mail, href: "mailto:soumabrataghosh57@gmail.com", tooltip: "Send Email" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/soumabrata-ghosh-85862530b/", tooltip: "Let's Connect" },
+                { Icon: Twitter, href: "https://x.com/SoumabrataGhosh", tooltip: "Follow Me" },
+                { Icon: User, href: "/resume.html", tooltip: "Yup, that's me" }
+              ].map((item, index) => {
+                const { Icon, href, tooltip } = item;
+                return (
+                  <div
+                    key={index}
+                    className="relative group cursor-pointer"
+                    onMouseEnter={() => setActiveTooltip(index)}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-subtext0 hover:text-purple transition-all transform hover:scale-110 block"
+                      aria-label={tooltip}
+                    >
+                      <Icon size={32} />
+                    </a>
 
-            <div className="flex flex-wrap gap-2 sm:gap-3 pt-2" data-aos="fade-up" data-aos-delay="250" data-aos-duration="800">
-              <span className="px-3 py-1 sm:px-4 sm:py-2 rounded-full border border-blue/50 text-blue text-xs sm:text-sm font-medium bg-blue/10">Node.js</span>
-              <span className="px-3 py-1 sm:px-4 sm:py-2 rounded-full border border-teal/50 text-teal text-xs sm:text-sm font-medium bg-teal/10">Express</span>
-              <span className="px-3 py-1 sm:px-4 sm:py-2 rounded-full border border-green/50 text-green text-xs sm:text-sm font-medium bg-green/10">MongoDB</span>
-              <span className="px-3 py-1 sm:px-4 sm:py-2 rounded-full border border-mauve/50 text-mauve text-xs sm:text-sm font-medium bg-mauve/10">React</span>
-              <span className="px-3 py-1 sm:px-4 sm:py-2 rounded-full border border-pink/50 text-pink text-xs sm:text-sm font-medium bg-pink/10">System Design</span>
+                    {/* Tooltip */}
+                    <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max px-3 py-1 bg-orange text-base font-bold text-xs rounded-lg shadow-lg transition-all duration-300 transform ${activeTooltip === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+                      {tooltip}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-orange"></div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-6 items-center sm:items-start" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+            {/* NPX Card (Cyan Bar Style) */}
+            <div className="w-full sm:w-auto pt-4">
               <div className="relative group w-full sm:w-auto">
                 <div className="relative z-10 flex items-center bg-[#11111b] border border-white/10 rounded-xl overflow-hidden w-full sm:w-[380px] h-14 shadow-lg transition-transform duration-300 hover:scale-[1.02]">
                   {/* Left Cyan Bar */}
@@ -101,22 +114,25 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="flex gap-5 items-center h-14">
-                <Github className="text-subtext0 hover:text-white cursor-pointer transition-colors hover:scale-110 duration-300" size={26} />
-                <Mail className="text-subtext0 hover:text-white cursor-pointer transition-colors hover:scale-110 duration-300" size={26} />
-                <Linkedin className="text-subtext0 hover:text-white cursor-pointer transition-colors hover:scale-110 duration-300" size={26} />
+          </div>
+
+          {/* Right Column: Image */}
+          <div className="flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
+            <div className="animate-float">
+              <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[3rem] overflow-hidden border-4 border-white/5 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:rotate-1">
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple/20 to-transparent mix-blend-overlay z-10"></div>
+                <img
+                  src="/profile.jpg"
+                  alt="Soumabrata"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
-        </div>
 
-        <button
-          onClick={handleScroll}
-          className="mx-auto block mt-12 sm:mt-20 text-subtext0 hover:text-main transition-colors duration-300 animate-bounce" data-aos="fade-up" data-aos-delay="400"
-        >
-          <ChevronDown size={24} className="sm:size-8 animate-bounce" />
-        </button>
+        </div>
       </div>
     </section>
   );
