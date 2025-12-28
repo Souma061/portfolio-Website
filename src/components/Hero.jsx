@@ -134,6 +134,18 @@ export default function Hero() {
 
         </div>
       </div>
+      {/* Notification Notification */}
+      <div
+        className={`fixed top-24 right-10 z-50 transition-all duration-300 transform ${copied ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'}`}
+      >
+        <div className="bg-white rounded-xl shadow-xl p-4 flex flex-col gap-1 border border-gray-100 min-w-[280px]">
+          <div className="flex items-center gap-2">
+            <Check size={18} className="text-green" />
+            <span className="text-gray-900 font-bold text-sm">Copied to clipboard</span>
+          </div>
+          <p className="text-gray-500 text-xs pl-6">Make sure you run this in your terminal &lt;3</p>
+        </div>
+      </div>
     </section>
   );
 }
