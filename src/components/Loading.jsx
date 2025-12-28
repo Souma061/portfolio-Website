@@ -5,11 +5,16 @@ export default function Loading() {
 
   useEffect(() => {
     if (isVisible) {
+      document.body.style.overflow = 'hidden';
       const timer = setTimeout(() => {
         setIsVisible(false);
+        document.body.style.overflow = 'unset';
         sessionStorage.setItem('portfolio_loaded', 'true');
       }, 2000);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = 'unset';
+      };
     }
   }, [isVisible]);
 
