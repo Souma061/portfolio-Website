@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
 @import "tailwindcss";
 @theme {
   /* Catppuccin Mocha Theme (Pastel Purple/Mauve Focus) */
@@ -25,8 +26,6 @@
 
   --color-border: #45475a; /* Surface 1 for borders */
 }
-
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
 
 :root {
   font-family: "JetBrains Mono", monospace;

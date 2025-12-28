@@ -85,7 +85,7 @@ export default function About() {
           <div className="space-y-8" data-aos="fade-left" data-aos-duration="800">
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed font-light">
               <p>
-                I am obsessed with <span className="text-green font-semibold">API performance</span> and <span className="text-purple font-semibold">database architecture</span>.
+                Hello, I am <span className="text-yellow font-semibold">Soumabrata Ghosh</span>. I am obsessed with <span className="text-green font-semibold">API performance</span> and <span className="text-purple font-semibold">database architecture</span>.
                 While I enjoy building sleek frontends with <span className="text-cyan font-semibold">React</span>, my true passion lies in designing the <span className="text-pink font-semibold">logic</span> that happens
                 under the hood—optimizing <span className="text-green font-semibold">MongoDB queries</span> and structuring <span className="text-orange font-semibold">Express routes</span> for maximum <span className="text-purple font-semibold">scalability</span>.
               </p>
