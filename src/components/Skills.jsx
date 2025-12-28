@@ -10,15 +10,15 @@ export default function Skills() {
   // Data imported from ../data/skills
 
   return (
-    <section id="skills" className="py-20 bg-slate-800">
+    <section id="skills" className="py-20 bg-base">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Skills & Expertise
+            <span className="font-mono text-3xl sm:text-4xl text-white font-bold">
+              <span className="text-purple">const</span> skills = <span className="text-main">['Frontend', 'Backend', 'Tools']</span>;
             </span>
           </h2>
-          <div className="w-20 h-1 bg-linear-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -27,26 +27,26 @@ export default function Skills() {
             return (
               <div
                 key={index}
-                className="group relative bg-linear-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-lg p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
+                className="group relative bg-mantle border border-surface0 rounded-2xl p-8 hover:border-purple/50 transition-all duration-300"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
                 data-aos-duration="800"
               >
                 {/* Background gradient on hover */}
-                <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                 <div className="relative z-10">
-                  <div className="mb-6 inline-block p-3 bg-linear-to-br from-blue-500/20 to-cyan-500/20 rounded-lg group-hover:from-blue-500/40 group-hover:to-cyan-500/40 transition-all duration-300">
-                    <Icon className="w-8 h-8 text-blue-400" />
+                  <div className="mb-6 inline-block p-3 bg-surface0 rounded-lg border border-surface1 group-hover:border-purple/30 transition-all duration-300">
+                    <Icon className="w-8 h-8 text-white group-hover:text-purple transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
+                  <h3 className="text-xl font-bold text-orange mb-4">{category.title}</h3>
 
                   <ul className="space-y-3">
                     {category.skills.map((skill, skillIndex) => (
                       <li key={skillIndex} className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-linear-to-r from-blue-400 to-cyan-400"></span>
-                        <span className="text-slate-300 group-hover:text-white transition-colors duration-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green shadow-lg shadow-green/50"></span>
+                        <span className="text-subtext0 group-hover:text-subtext1 transition-colors duration-300 font-mono text-sm">
                           {skill}
                         </span>
                       </li>
@@ -60,8 +60,8 @@ export default function Skills() {
 
         {/* Tech Stack Icons */}
         <div className="mt-16" data-aos="fade-up" data-aos-duration="800">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">Languages and Tools I Use</h3>
-          <div className="flex flex-wrap gap-4 justify-center items-center bg-linear-to-r from-slate-800/30 to-slate-900/30 border border-slate-700/50 rounded-lg p-8">
+          <h3 className="text-lg font-mono text-subtext0 mb-8 text-center">&lt;TechStack /&gt;</h3>
+          <div className="flex flex-wrap gap-4 justify-center items-center bg-transparent">
             {techStackIcons.map((tech, index) => (
               <div
                 key={index}
@@ -69,10 +69,10 @@ export default function Skills() {
                 data-aos="zoom-in"
                 data-aos-delay={index * 50}
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 hover:bg-white/20 border border-slate-600/50 group-hover:border-blue-400/50 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all duration-300 p-2">
-                  <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-surface0 border border-surface1 group-hover:border-purple/50 flex items-center justify-center transition-all duration-300 p-3 hover:scale-110">
+                  <img src={tech.src} alt={tech.name} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
                 </div>
-                <span className="text-xs text-slate-400 group-hover:text-slate-200 text-center font-medium transition-colors duration-300">
+                <span className="text-xs text-subtext0 group-hover:text-white text-center font-mono mt-2 transition-colors duration-300">
                   {tech.name}
                 </span>
               </div>

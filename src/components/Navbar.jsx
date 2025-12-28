@@ -41,11 +41,11 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed w-full bg-linear-to-b from-slate-900 via-slate-900 to-transparent backdrop-blur-md z-50 border-b border-slate-700/50">
+    <nav className="fixed w-full bg-linear-to-b from-base via-base to-transparent backdrop-blur-md z-50 border-b border-white/10">
       <div className="w-full px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 min-h-16">
           <div className="grow-0">
-            <a href="#home" className="text-lg sm:text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-cyan-300 transition-all duration-300">
+            <a href="#home" className="text-lg sm:text-2xl font-bold bg-linear-to-r from-blue to-sky bg-clip-text text-transparent hover:from-sapphire hover:to-teal transition-all duration-300">
               Soumabrata
             </a>
           </div>
@@ -59,14 +59,12 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className={`transition-colors duration-300 font-medium text-sm relative group whitespace-nowrap ${
-                    isActive ? 'text-cyan-400' : 'text-slate-300 hover:text-white'
-                  }`}
+                  className={`transition-colors duration-300 font-medium text-sm relative group whitespace-nowrap ${isActive ? 'text-sky' : 'text-subtext1 hover:text-main'
+                    }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-blue to-sky transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
                 </a>
               );
             })}
@@ -76,7 +74,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="px-4 lg:px-6 py-2 rounded-lg bg-linear-to-r from-blue-500 to-cyan-500 text-white font-medium text-sm lg:text-base hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/50 whitespace-nowrap"
+              className="px-4 lg:px-6 py-2 rounded-lg bg-linear-to-r from-blue to-sky text-base font-medium text-sm lg:text-base hover:from-sapphire hover:to-teal transition-all duration-300 shadow-lg hover:shadow-blue/50 whitespace-nowrap"
             >
               Get In Touch
             </a>
@@ -85,7 +83,7 @@ export default function Navbar() {
           <div className="md:hidden ml-2 shrink-0">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-white transition-colors p-1 inline-flex items-center justify-center"
+              className="text-subtext1 hover:text-main transition-colors p-1 inline-flex items-center justify-center"
             >
               {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -94,7 +92,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-700/50">
+        <div className="md:hidden bg-mantle border-t border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => {
               const sectionId = link.href.substring(1);
@@ -104,9 +102,8 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className={`block px-3 py-2 rounded-md transition-colors duration-300 font-medium ${
-                    isActive ? 'text-cyan-400 bg-slate-800/50' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                  }`}
+                  className={`block px-3 py-2 rounded-md transition-colors duration-300 font-medium ${isActive ? 'text-sky bg-surface0/50' : 'text-subtext1 hover:text-main hover:bg-surface0'
+                    }`}
                 >
                   {link.name}
                 </a>
@@ -115,7 +112,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="block px-3 py-2 rounded-md bg-linear-to-r from-blue-500 to-cyan-500 text-white font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+              className="block px-3 py-2 rounded-md bg-linear-to-r from-blue to-sky text-base font-medium hover:from-sapphire hover:to-teal transition-all duration-300"
             >
               Get In Touch
             </a>

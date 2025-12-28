@@ -12,11 +12,11 @@ const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   return (
-    <div className="bg-slate-950 text-white">
+    <div className="bg-base text-main">
       <Loading />
       <Navbar />
       <Hero />
-      <Suspense fallback={<div className="min-h-screen bg-slate-950"></div>}>
+      <Suspense fallback={<div className="min-h-screen bg-base"></div>}>
         <About />
         <Skills />
         <Projects />

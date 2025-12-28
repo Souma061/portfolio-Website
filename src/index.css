@@ -1,7 +1,29 @@
 @import "tailwindcss";
-html {
-  width: 100%;
-  height: 100%;
+@theme {
+  /* Catppuccin Mocha Theme (Pastel Purple/Mauve Focus) */
+  --color-base: #1e1e2e; /* Mocha Base */
+  --color-base-lighter: #181825; /* Mocha Mantle */
+  --color-mantle: #181825;
+  --color-surface0: #313244; /* Surface 0 */
+  --color-surface1: #45475a; /* Surface 1 */
+  --color-surface2: #585b70; /* Surface 2 */
+
+  --color-main: #cdd6f4; /* Mocha Text (Pastel White) */
+  --color-subtext0: #bac2de; /* Mocha Subtext 1 */
+  --color-subtext1: #a6adc8; /* Mocha Subtext 0 */
+
+  --color-blue: #89b4fa; /* Mocha Blue */
+  --color-sky: #89dceb; /* Mocha Sky */
+  --color-cyan: #94e2d5; /* Mocha Teal (close match for Cyan) */
+  --color-teal: #94e2d5; /* Mocha Teal */
+  --color-green: #a6e3a1; /* Mocha Green */
+  --color-purple: #c4b5fd; /* Solid Pastel Violet (Vineet-style) */
+  --color-pink: #f5c2e7; /* Mocha Pink */
+  --color-rose: #eba0ac; /* Mocha Maroonish Pink */
+  --color-orange: #fab387; /* Mocha Peach */
+  --color-yellow: #f9e2af; /* Mocha Yellow */
+
+  --color-border: #45475a; /* Surface 1 for borders */
 }
 
 :root {
@@ -9,8 +31,9 @@ html {
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color-scheme: dark;
+  color: var(--color-main);
+  background-color: var(--color-base);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,13 +41,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Ensure inputs inherit color or use main */
+input,
+textarea,
+select {
+  color: var(--color-main);
 }
 
 body {
@@ -34,8 +55,6 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-x: hidden;
-  width: 100%;
 }
 
 h1 {
@@ -50,19 +69,20 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-surface0);
   cursor: pointer;
   transition: border-color 0.25s;
+  color: var(--color-main);
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-blue);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Text Reveal Animation - Better smooth typewriter effect */
+/* Text Reveal Animation */
 @keyframes nameReveal {
   0% {
     opacity: 0;
@@ -80,17 +100,4 @@ button:focus-visible {
   animation: nameReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   animation-delay: 0.4s;
   opacity: 0;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
