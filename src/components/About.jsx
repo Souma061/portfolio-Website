@@ -43,8 +43,8 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-crust relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="about" className="py-20 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className="text-white">About</span> <span className="text-purple">Me</span>
@@ -68,7 +68,7 @@ export default function About() {
                 return (
                   <div
                     key={index}
-                    className={`group flex flex-col items-center justify-center p-6 rounded-2xl bg-mantle border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderColor}`}
+                    className={`group flex flex-col items-center justify-center p-6 rounded-2xl bg-[#181825] border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderColor}`}
                   >
                     <div className={`mb-4 p-4 rounded-full bg-white/5 transition-colors duration-300 ${item.bgColor}`}>
                       <IconComponent size={32} className={`transition-transform duration-300 group-hover:scale-110 ${item.color}`} />
@@ -83,28 +83,26 @@ export default function About() {
 
           {/* Text Content */}
           <div className="space-y-8" data-aos="fade-left" data-aos-duration="800">
-            <div className="space-y-6 text-lg text-gray-300 leading-relaxed font-light">
+            <div className="space-y-6 text-xl text-gray-300 leading-relaxed font-light">
               <p>
-                Hello, I am <span className="text-yellow font-semibold">Soumabrata Ghosh</span>. I am obsessed with <span className="text-green font-semibold">API performance</span> and <span className="text-purple font-semibold">database architecture</span>.
-                While I enjoy building sleek frontends with <span className="text-cyan font-semibold">React</span>, my true passion lies in designing the <span className="text-pink font-semibold">logic</span> that happens
-                under the hood—optimizing <span className="text-green font-semibold">MongoDB queries</span> and structuring <span className="text-orange font-semibold">Express routes</span> for maximum <span className="text-purple font-semibold">scalability</span>.
+                Hello, I am <span className="text-yellow font-semibold">Soumabrata Ghosh</span>. I am obsessed with <span className="text-purple font-semibold">API performance</span> and <span className="text-blue font-semibold">database architecture</span>.
+                While I enjoy building sleek frontends with <span className="text-cyan font-semibold">React</span>, my true passion lies in designing the <span className="text-pink font-semibold">logic</span> that happens under the hood.
               </p>
 
               <p>
-                I believe that a great application isn't just about features, but about how it handles <span className="text-cyan font-semibold">data</span>, <span className="text-rose font-semibold">security</span>,
-                and <span className="text-orange font-semibold">concurrency</span>. I focus on writing <span className="text-green font-semibold">self-documenting code</span> and building systems that are easy to <span className="text-blue font-semibold">maintain</span> and expand.
+                I focus on writing <span className="text-gray-100 font-medium">self-documenting code</span>, optimizing <span className="text-green font-semibold">queries</span>, and building systems that are scalable and easy to maintain.
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-5">
-              <div className="bg-[#11111b] border border-white/5 rounded-2xl p-6 hover:border-blue/30 transition-colors group">
-                <h4 className="text-gray-400 font-medium mb-2 text-sm uppercase tracking-wider">Projects Built</h4>
-                <p className="text-4xl font-bold text-white group-hover:text-blue transition-colors">5+</p>
+              <div className="bg-[#181825] border border-white/5 rounded-2xl p-6 hover:border-blue/30 transition-colors group">
+                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Projects Built</h4>
+                <p className="text-5xl font-extrabold text-white group-hover:text-blue transition-colors">5+</p>
               </div>
-              <div className="bg-[#11111b] border border-white/5 rounded-2xl p-6 hover:border-purple/30 transition-colors group">
-                <h4 className="text-gray-400 font-medium mb-2 text-sm uppercase tracking-wider">Experience</h4>
-                <p className="text-4xl font-bold text-white group-hover:text-purple transition-colors">1+ <span className="text-lg text-gray-500 font-normal">Years</span></p>
+              <div className="bg-[#181825] border border-white/5 rounded-2xl p-6 hover:border-purple/30 transition-colors group">
+                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Experience</h4>
+                <p className="text-5xl font-extrabold text-white group-hover:text-purple transition-colors">1+ <span className="text-xl text-gray-400 font-medium">Years</span></p>
               </div>
             </div>
 
@@ -117,6 +115,7 @@ export default function About() {
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </section>

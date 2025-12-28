@@ -85,26 +85,33 @@ export default function Skills() {
 
         {/* Tech Stack Marquee / Cloud */}
         <div className="mt-20 pt-10 border-t border-white/5" data-aos="fade-up">
-          <p className="text-center text-gray-500 font-mono text-sm mb-10 tracking-widest uppercase">Technologies I work with</p>
+          <p className="text-center font-mono text-xl mb-12 font-bold">
+            <span className="text-blue">Technologies</span> <span className="text-purple mx-2">I</span> <span className="text-green">Work With</span>
+          </p>
 
-          <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
-            {techStackIcons.map((tech, index) => (
-              <div
-                key={index}
-                className="group flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-2"
-                data-aos="zoom-in"
-                data-aos-delay={index * 50}
-              >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/5 p-4 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 shadow-lg group-hover:shadow-purple/20">
-                  <img
-                    src={tech.src}
-                    alt={tech.name}
-                    className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                  />
+          <div className="flex flex-wrap justify-center gap-5 sm:gap-8">
+            {techStackIcons.map((tech, index) => {
+              const textColors = ['text-blue-500', 'text-purple-500', 'text-green-500', 'text-yellow-500', 'text-pink-500', 'text-cyan-500'];
+              const colorClass = textColors[index % textColors.length];
+
+              return (
+                <div
+                  key={index}
+                  className="group flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 50}
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/5 p-4 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 shadow-lg group-hover:shadow-purple/20">
+                    <img
+                      src={tech.src}
+                      alt={tech.name}
+                      className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                    />
+                  </div>
+                  <span className={`text-sm font-semibold ${colorClass} group-hover:text-white transition-colors`}>{tech.name}</span>
                 </div>
-                <span className="text-xs font-mono text-gray-500 group-hover:text-purple transition-colors">{tech.name}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
