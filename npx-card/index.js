@@ -25,7 +25,7 @@ const data = {
   name: chalk.white('Soumabrata Ghosh'),
   status: chalk.white('Fullstack Developer'),
   github: chalk.gray('https://github.com/') + chalk.cyan('Souma061'),
-  website: chalk.gray('https://') + chalk.cyan('soumabrata.dev'),
+  website: chalk.gray('https://') + chalk.cyan('soumabrata.me'),
 
   labelName: chalk.bold.green('NAME    '),
   labelStatus: chalk.bold.green('STATUS  '),
