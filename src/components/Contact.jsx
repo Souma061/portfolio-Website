@@ -26,6 +26,12 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!import.meta.env.VITE_FORMSPREE_ENDPOINT) {
+      alert('VITE_FORMSPREE_ENDPOINT is not defined in your .env file!');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -50,13 +56,14 @@ export default function Contact() {
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error('Failed to send');
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message.'
+        message: 'Failed to send message. Check console for details.'
       });
     } finally {
       setIsSubmitting(false);
