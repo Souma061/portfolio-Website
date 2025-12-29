@@ -9,7 +9,6 @@ export default function Hero() {
   const imageRafRef = useRef(0);
 
   useEffect(() => {
-    AOS.init({ once: true });
     AOS.refresh();
   }, []);
 

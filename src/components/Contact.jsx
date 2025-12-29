@@ -11,7 +11,6 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-
   useEffect(() => {
     AOS.refresh();
   }, []);
@@ -72,7 +71,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-base relative overflow-hidden">
+    <section id="contact" className="py-24 bg-base relative overflow-hidden" data-aos="fade-up">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px pointer-events-none]"></div>
 
       <div className="container mx-auto px-4 z-10">

@@ -61,7 +61,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-20 bg-crust relative">
+    <section id="projects" className="py-20 bg-crust relative" data-aos="fade-up">
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}

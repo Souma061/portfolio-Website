@@ -1,3 +1,4 @@
+import AOS from 'aos';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { applyCatppuccinTheme, getStoredCatppuccinFlavor, setStoredCatppuccinFlavor } from '../theme/catppuccinMocha.js';
@@ -21,6 +22,20 @@ export default function Navbar() {
     element?.scrollIntoView({ behavior: 'smooth' });
     setIsOpen(false);
     setActiveSection(href.substring(1));
+
+    // Ensure AOS marks elements visible after programmatic scrolling.
+    setTimeout(() => {
+      try {
+        if (typeof AOS.refreshHard === 'function') {
+          AOS.refreshHard();
+        } else {
+          AOS.refresh();
+        }
+      } finally {
+        // AOS listens to scroll; trigger one after smooth-scroll jumps.
+        window.dispatchEvent(new Event('scroll'));
+      }
+    }, 250);
   };
 
   useEffect(() => {

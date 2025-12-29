@@ -13,7 +13,7 @@ if (document.readyState === 'loading') {
     AOS.init({
       duration: 800,
       once: false,
-      mirror: true,
+      mirror: false,
       offset: 100,
       disable: false,
       easing: 'ease-in-out',
@@ -23,7 +23,7 @@ if (document.readyState === 'loading') {
   AOS.init({
     duration: 800,
     once: false,
-    mirror: true,
+    mirror: false,
     offset: 100,
     disable: false,
     easing: 'ease-in-out',

@@ -43,7 +43,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="py-20 relative overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">

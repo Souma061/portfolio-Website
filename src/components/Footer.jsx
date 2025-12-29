@@ -6,12 +6,27 @@ export default function Footer() {
 
 
   useEffect(() => {
-    AOS.refresh();
+    if (typeof AOS.refreshHard === 'function') {
+      AOS.refreshHard();
+    } else {
+      AOS.refresh();
+    }
+
+    // AOS applies `opacity: 0` until it sees a scroll event.
+    // Footer is lazy-loaded, so force a tick to trigger visibility.
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
   }, []);
 
   return (
-    <footer className="py-8 border-t border-white/5">
-      <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+    <footer className="mt-auto py-8 border-t border-white/5">
+      <div
+        className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm"
+        data-aos="fade"
+        data-aos-offset="0"
+        data-aos-duration="400"
+      >
 
         {/* Social Links - Left Side */}
         <div className="flex gap-6 order-2 md:order-1">

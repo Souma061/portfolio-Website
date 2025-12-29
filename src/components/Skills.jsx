@@ -8,7 +8,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="py-24 bg-base relative overflow-hidden">
+    <section id="skills" className="py-24 bg-base relative overflow-hidden" data-aos="fade-up">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px pointer-events-none]"></div>
 
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl mx-auto">
