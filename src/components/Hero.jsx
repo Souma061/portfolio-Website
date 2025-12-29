@@ -1,10 +1,12 @@
 import AOS from 'aos';
 import { Check, Copy, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState(null);
+  const imageCardRef = useRef(null);
+  const imageRafRef = useRef(0);
 
   useEffect(() => {
     AOS.init({ once: true });
@@ -15,6 +17,36 @@ export default function Hero() {
     navigator.clipboard.writeText('npx soumabrata-dev@latest');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const resetImageTilt = () => {
+    const el = imageCardRef.current;
+    if (!el) return;
+    el.style.transition = 'transform 200ms ease';
+    el.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  };
+
+  const handleImagePointerMove = (e) => {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const el = imageCardRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+
+    const dx = (x - 0.5) * 2;
+    const dy = (y - 0.5) * 2;
+    const maxTilt = 8;
+
+    const rotateY = dx * maxTilt;
+    const rotateX = -dy * maxTilt;
+
+    cancelAnimationFrame(imageRafRef.current);
+    imageRafRef.current = requestAnimationFrame(() => {
+      el.style.transition = 'transform 0ms';
+      el.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+    });
   };
 
 
@@ -136,13 +168,23 @@ export default function Hero() {
           {/* Right Column: Image */}
           <div className="flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
             <div className="animate-float">
-              <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[3rem] overflow-hidden border-4 border-white/5 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:rotate-1">
-                <div className="absolute inset-0 bg-linear-to-tr from-purple/20 to-transparent mix-blend-overlay z-10"></div>
-                <img
-                  src="/profile.jpg"
-                  alt="Soumabrata"
-                  className="w-full h-full object-cover"
-                />
+              <div style={{ perspective: '900px' }}>
+                <div
+                  ref={imageCardRef}
+                  className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[3rem] overflow-hidden border-4 border-white/5 shadow-2xl"
+                  style={{ transformStyle: 'preserve-3d', willChange: 'transform', transform: 'rotateX(0deg) rotateY(0deg)' }}
+                  onPointerMove={handleImagePointerMove}
+                  onPointerLeave={resetImageTilt}
+                  onPointerCancel={resetImageTilt}
+                >
+                  <div className="absolute inset-0 bg-linear-to-tr from-purple/20 to-transparent mix-blend-overlay z-10"></div>
+                  <img
+                    src="/profile.jpg"
+                    alt="Soumabrata"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
+                </div>
               </div>
             </div>
           </div>
