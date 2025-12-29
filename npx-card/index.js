@@ -1,76 +1,108 @@
 #!/usr/bin/env node
 
+import boxen from 'boxen';
 import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
 import gradient from 'gradient-string';
+import ora from 'ora';
 
-// Clear the terminal first
-clear();
+// Themes
+const titleGradient = gradient(['#a855f7', '#ec4899']); // Purple to Pink for title
 
-// Pastel Purple Gradient to match site theme
-const purpleGradient = gradient(['#fdf4ff', '#c4b5fd', '#a855f7']);
-
-// Helper to print headers using Figlet
-const printHeader = (text) => {
-  console.log(purpleGradient(figlet.textSync(text, {
-    font: 'Pagga', // Compact, blocky font
-    horizontalLayout: 'default',
-    verticalLayout: 'default'
-  })));
-};
-
-// Define data
+// Data
 const data = {
-  name: chalk.white('Soumabrata Ghosh'),
-  status: chalk.white('Fullstack Developer'),
-  github: chalk.gray('https://github.com/') + chalk.cyan('Souma061'),
-  website: chalk.gray('https://') + chalk.cyan('soumabrata.me'),
+  name: chalk.bold.white('Soumabrata Ghosh'),
+  handle: chalk.cyan('Souma061'),
+  title: chalk.hex('#c4b5fd')('Fullstack Developer'),
+  fact: chalk.gray('btw its awesome'),
+  website: chalk.cyan('https://soumabrata.me'),
+  github: chalk.cyan('https://github.com/Souma061'),
 
-  labelName: chalk.bold.green('NAME    '),
-  labelStatus: chalk.bold.green('STATUS  '),
-  labelGitHub: chalk.bold.green('GITHUB  '),
-  labelWeb: chalk.bold.green('WEBSITE '),
-};
-
-const labels = {
-  LANGUAGES: chalk.bold.green('LANGUAGES    '),
-  FRAMEWORKS: chalk.bold.green('FRAMEWORKS   '),
-  TOOLS: chalk.bold.green('TOOLS        ')
-};
-
-const skills = {
-  languages: chalk.white('JavaScript, Python, C++'),
-  frameworks: chalk.white('React, ' + chalk.magenta('Node.js') + ', Express, MongoDB'),
+  // Skills
+  languages: chalk.white('JavaScript, C, Dart'),
+  frameworks: chalk.white('React, ') + chalk.hex('#8d79ba').bold('Node.js') + chalk.white(', Express, MongoDB'),
   tools: chalk.white('Git, VS Code, Postman')
 };
 
+// Utils
+const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const runFakeInstall = async () => {
+  console.log('');
+  const spinner = ora(chalk.dim('Resolving packages...')).start();
+  await sleep(300);
+
+  spinner.text = chalk.dim('Fetching dependency: ') + chalk.hex('#a855f7')('soumabrata-core@latest');
+  await sleep(300);
+
+  spinner.text = chalk.dim('Fetching dependency: ') + chalk.hex('#ec4899')('awesome-skills@v10.0.0');
+  await sleep(300);
+
+  spinner.text = chalk.dim('Linking dependencies...');
+  await sleep(400);
+
+  spinner.text = chalk.dim('Building optimized production bundle...');
+  await sleep(500);
+
+  spinner.succeed(chalk.green('Successfully installed ') + chalk.bold('Soumabrata v1.0.0') + chalk.dim(' in 1.8s'));
+  await sleep(800);
+};
+
+const showCard = () => {
+  // Clear the terminal first
+  clear();
+
+  // 1. The Big Aesthetic Title
+  const title = figlet.textSync('HI  THERE !!', {
+    font: 'ANSI Shadow',
+    horizontalLayout: 'default',
+  });
+
+  console.log(titleGradient(title));
+  console.log(chalk.gray('  ( ˘ ɜ˘) ཕ  ') + chalk.hex('#c4b5fd')('Loading Soumabrata\'s profile...\n'));
+
+  // 2. Build the Content String (Clean, aligned text)
+  const label = (text) => chalk.bold.hex('#a855f7')(text.padEnd(12)); // Purple labels
+
+  const content = `
+  ${label('NAME')} ${data.name}
+  ${label('STATUS')} ${data.title}
+
+  ${label('GITHUB')} ${data.github}
+  ${label('WEBSITE')} ${data.website}
+
+  ${chalk.gray('─'.repeat(50))}
+
+  ${label('LANGUAGES')} ${data.languages}
+  ${label('STACK')} ${data.frameworks}
+  ${label('TOOLS')} ${data.tools}
+
+  ${chalk.gray('─'.repeat(50))}
+
+  ${chalk.italic.white('  "Soumabrata is up for hire, ready to help your')}
+  ${chalk.italic.white('   company get to next heights!"')}
+`;
+
+  // 3. Wrap it in a Box
+  const boxedOutput = boxen(content, {
+    padding: 1,
+    margin: 1,
+    borderStyle: 'round',
+    borderColor: 'magenta',
+    backgroundColor: '#1e1e1e',
+  });
+
+  console.log(boxedOutput);
+
+  // Footer
+  console.log(chalk.gray(`     Thanks for dropping by! `));
+  console.log('');
+};
+
 const main = async () => {
-  // Top kawaii line
-  console.log(chalk.gray('( ˘ ɜ˘) ཕ'));
-
-  // Huge "HI THERE!!"
-  console.log(purpleGradient(figlet.textSync('HI THERE!!', { font: 'ANSI Shadow' }))); // Big bold standard font for main title
-
-  console.log(chalk.magenta('✔ ') + 'Loading Soumabrata\'s details\n');
-
-  printHeader('PERSONAL DETAILS');
-  console.log(` ${data.labelName}  -  ${data.name}`);
-  console.log(` ${data.labelStatus}  -  ${data.status}`);
-  console.log(` ${data.labelGitHub}  -  btw its awesome -> (${data.github})`);
-  console.log(` ${data.labelWeb}  -  Coolest thing   -> (${data.website})`);
-  console.log('');
-
-  printHeader('SKILLS');
-  console.log(` ${labels.LANGUAGES} -  ${skills.languages}`);
-  console.log(` ${labels.FRAMEWORKS} -  ${skills.frameworks}`);
-  console.log(` ${labels.TOOLS}      -  ${skills.tools}`);
-  console.log('');
-
-  printHeader('MESSAGE');
-  console.log(' Soumabrata is up for hire, ready to help your company get to next heights!');
-  console.log(' Thanks for checking out my cli!');
-  console.log('');
+  await runFakeInstall();
+  showCard();
 };
 
 main();
