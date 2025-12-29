@@ -15,9 +15,9 @@ export default function Skills() {
         {/* Header */}
         <div className="mb-20 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="text-white">Technical</span> <span className="text-purple">Arsenal</span>
+            <span className="text-main">Technical</span> <span className="text-purple">Arsenal</span>
           </h2>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-mono text-gray-400">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface0/60 border border-surface1 text-sm font-mono text-subtext0">
             <span className="w-2 h-2 rounded-full bg-green animate-pulse"></span>
             System Status: Optimal
           </div>
@@ -47,31 +47,31 @@ export default function Skills() {
             return (
               <div
                 key={index}
-                className={`group relative h-full bg-[#1e1e2e] rounded-3xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-white/5 ${borderColors[index]}`}
+                className={`group relative h-full bg-base rounded-3xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-white/5 ${borderColors[index]}`}
                 data-aos="fade-up"
                 data-aos-delay={index * 150}
               >
                 {/* Internal Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent opacity-0 transition-opacity duration-500 ${bgGradients[index]}`}></div>
+                <div className={`absolute inset-0 bg-linear-to-br from-transparent via-transparent to-transparent opacity-0 transition-opacity duration-500 ${bgGradients[index]}`}></div>
 
-                <div className="relative h-full bg-[#11111b] rounded-[22px] p-8 flex flex-col items-start gap-6 z-10">
+                <div className="relative h-full bg-crust rounded-[22px] p-8 flex flex-col items-start gap-6 z-10">
 
                   {/* Header: Icon & Title */}
                   <div className="flex items-center gap-4 w-full border-b border-white/5 pb-6">
                     <div className={`p-3 rounded-xl bg-white/5 ${iconColors[index]} ring-1 ring-white/10 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon size={32} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight">{category.title}</h3>
+                    <h3 className="text-2xl font-bold text-main tracking-tight">{category.title}</h3>
                   </div>
 
                   {/* Skills List */}
                   <div className="w-full space-y-4">
                     {category.skills.map((skill, i) => (
                       <div key={i} className="group/item flex items-center justify-between">
-                        <span className={`text-gray-400 font-medium group-hover/item:text-white transition-colors duration-300`}>
+                        <span className={`text-gray-400 font-medium group-hover/item:text-main transition-colors duration-300`}>
                           {skill}
                         </span>
-                        <div className="h-[2px] w-12 bg-white/5 rounded-full overflow-hidden">
+                        <div className="h-0.5 w-12 bg-white/5 rounded-full overflow-hidden">
                           <div className={`h-full w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-100 ${index === 0 ? 'bg-purple' : index === 1 ? 'bg-cyan' : 'bg-green'}`}></div>
                         </div>
                       </div>
@@ -91,7 +91,7 @@ export default function Skills() {
 
           <div className="flex flex-wrap justify-center gap-5 sm:gap-8">
             {techStackIcons.map((tech, index) => {
-              const textColors = ['text-blue-500', 'text-purple-500', 'text-green-500', 'text-yellow-500', 'text-pink-500', 'text-cyan-500'];
+              const textColors = ['text-blue', 'text-purple', 'text-green', 'text-yellow', 'text-pink', 'text-cyan'];
               const colorClass = textColors[index % textColors.length];
 
               return (
@@ -108,7 +108,7 @@ export default function Skills() {
                       className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
                     />
                   </div>
-                  <span className={`text-sm font-semibold ${colorClass} group-hover:text-white transition-colors`}>{tech.name}</span>
+                  <span className={`text-sm font-semibold ${colorClass} group-hover:text-main transition-colors`}>{tech.name}</span>
                 </div>
               );
             })}

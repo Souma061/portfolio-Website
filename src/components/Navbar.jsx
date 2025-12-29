@@ -1,9 +1,11 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { applyCatppuccinTheme, getStoredCatppuccinFlavor, setStoredCatppuccinFlavor } from '../theme/catppuccinMocha.js';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [flavor, setFlavor] = useState(() => getStoredCatppuccinFlavor() ?? 'mocha');
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -22,6 +24,17 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    // Ensure theme is applied if user loads mid-session.
+    applyCatppuccinTheme(flavor);
+
+    const handleStorage = (e) => {
+      if (e.key !== 'catppuccin-flavor') return;
+      const next = getStoredCatppuccinFlavor() ?? 'mocha';
+      setFlavor(next);
+      applyCatppuccinTheme(next);
+    };
+
+    window.addEventListener('storage', handleStorage);
     const throttle = (func, limit) => {
       let lastFunc;
       let lastRan;
@@ -58,8 +71,18 @@ export default function Navbar() {
     }, 100);
 
     window.addEventListener('scroll', handleScrollEvent);
-    return () => window.removeEventListener('scroll', handleScrollEvent);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener('scroll', handleScrollEvent);
+    };
   }, []);
+
+  const toggleTheme = () => {
+    const next = flavor === 'mocha' ? 'latte' : 'mocha';
+    setFlavor(next);
+    setStoredCatppuccinFlavor(next);
+    applyCatppuccinTheme(next);
+  };
 
   return (
     <nav className="fixed w-full bg-linear-to-b from-base via-base to-transparent backdrop-blur-md z-50 border-b border-white/10">
@@ -91,11 +114,21 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="hidden md:block ml-4 lg:ml-6 shrink-0">
+          <div className="hidden md:flex items-center ml-4 lg:ml-6 gap-3 shrink-0">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-mantle border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-white/5 transition-all"
+              aria-label={flavor === 'mocha' ? 'Switch to Latte theme' : 'Switch to Mocha theme'}
+              title={flavor === 'mocha' ? 'Switch to Latte' : 'Switch to Mocha'}
+            >
+              {flavor === 'mocha' ? <Moon size={18} className="text-purple" /> : <Sun size={18} className="text-yellow" />}
+              <span className="text-sm font-medium">{flavor === 'mocha' ? 'Mocha' : 'Latte'}</span>
+            </button>
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="px-4 lg:px-6 py-2 rounded-lg bg-linear-to-r from-blue to-sky text-base font-medium text-sm lg:text-base hover:from-sapphire hover:to-teal transition-all duration-300 shadow-lg hover:shadow-blue/50 whitespace-nowrap"
+              className="navbar-cta px-4 lg:px-6 py-2 rounded-lg bg-linear-to-r from-blue to-sky text-[1rem] font-medium text-sm lg:text-[1rem] hover:from-sapphire hover:to-teal transition-all duration-300 shadow-lg hover:shadow-blue/50 whitespace-nowrap"
             >
               Get In Touch
             </a>
@@ -133,10 +166,20 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="block px-3 py-2 rounded-md bg-linear-to-r from-blue to-sky text-base font-medium hover:from-sapphire hover:to-teal transition-all duration-300"
+              className="navbar-cta block px-3 py-2 rounded-md bg-linear-to-r from-blue to-sky text-[1rem] font-medium hover:from-sapphire hover:to-teal transition-all duration-300"
             >
               Get In Touch
             </a>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="w-full flex items-center gap-2 px-3 py-2 rounded-md bg-surface0/50 border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-surface0 transition-all"
+              aria-label={flavor === 'mocha' ? 'Switch to Latte theme' : 'Switch to Mocha theme'}
+            >
+              {flavor === 'mocha' ? <Moon size={18} className="text-purple" /> : <Sun size={18} className="text-yellow" />}
+              <span className="font-medium">Theme: {flavor === 'mocha' ? 'Mocha' : 'Latte'}</span>
+            </button>
           </div>
         </div>
       )}

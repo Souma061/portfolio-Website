@@ -1,30 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
 @import "tailwindcss";
 @theme {
-  /* Catppuccin Mocha Theme (Pastel Purple/Mauve Focus) */
-  --color-base: #1e1e2e; /* Mocha Base */
-  --color-base-lighter: #181825; /* Mocha Mantle */
+  /* Catppuccin Mocha Theme (exact palette) */
+  --color-base: #1e1e2e;
+  --color-base-lighter: #181825;
   --color-mantle: #181825;
-  --color-surface0: #313244; /* Surface 0 */
-  --color-surface1: #45475a; /* Surface 1 */
-  --color-surface2: #585b70; /* Surface 2 */
+  --color-crust: #11111b;
 
-  --color-main: #cdd6f4; /* Mocha Text (Pastel White) */
-  --color-subtext0: #bac2de; /* Mocha Subtext 1 */
-  --color-subtext1: #a6adc8; /* Mocha Subtext 0 */
+  --color-surface0: #313244;
+  --color-surface1: #45475a;
+  --color-surface2: #585b70;
 
-  --color-blue: #89b4fa; /* Mocha Blue */
-  --color-sky: #89dceb; /* Mocha Sky */
-  --color-cyan: #94e2d5; /* Mocha Teal (close match for Cyan) */
-  --color-teal: #94e2d5; /* Mocha Teal */
-  --color-green: #a6e3a1; /* Mocha Green */
-  --color-purple: #c4b5fd; /* Solid Pastel Violet (Vineet-style) */
-  --color-pink: #f5c2e7; /* Mocha Pink */
-  --color-rose: #eba0ac; /* Mocha Maroonish Pink */
-  --color-orange: #fab387; /* Mocha Peach */
-  --color-yellow: #f9e2af; /* Mocha Yellow */
+  --color-overlay0: #6c7086;
+  --color-overlay1: #7f849c;
+  --color-overlay2: #9399b2;
 
-  --color-border: #45475a; /* Surface 1 for borders */
+  --color-main: #cdd6f4;
+  --color-subtext0: #a6adc8;
+  --color-subtext1: #bac2de;
+
+  --color-blue: #89b4fa;
+  --color-sapphire: #74c7ec;
+  --color-sky: #89dceb;
+  --color-cyan: #94e2d5; /* Mocha teal */
+  --color-teal: #94e2d5;
+  --color-green: #a6e3a1;
+  --color-purple: #cba6f7; /* Mocha mauve */
+  --color-lavender: #b4befe;
+  --color-pink: #f5c2e7;
+  --color-rose: #f5e0dc; /* Mocha rosewater */
+  --color-orange: #fab387; /* Mocha peach */
+  --color-yellow: #f9e2af;
+  --color-red: #f38ba8;
+
+  /* Aliases to keep existing Tailwind utilities within the Mocha palette */
+  --color-gray-100: #bac2de; /* subtext1 */
+  --color-gray-300: #bac2de; /* subtext1 */
+  --color-gray-400: #a6adc8; /* subtext0 */
+  --color-gray-500: #7f849c; /* overlay1 */
+  --color-gray-700: #585b70; /* surface2 */
+  --color-gray-900: #11111b; /* crust */
+  --color-slate-900: #11111b; /* crust */
+
+  --color-border: #45475a;
 }
 
 :root {
@@ -49,6 +67,13 @@ body,
   color: var(--color-main);
 }
 
+/* Latte: use a slightly darker surface than `base` for the page background */
+[data-catppuccin="latte"] html,
+[data-catppuccin="latte"] body,
+[data-catppuccin="latte"] #root {
+  background-color: var(--color-mantle);
+}
+
 /* Only style "plain" links globally.
    Many anchors in the app are styled as buttons via Tailwind classes; this keeps their colors intact. */
 a:not([class]) {
@@ -58,6 +83,33 @@ a:not([class]) {
 
 a:not([class]):hover {
   color: var(--color-sky);
+}
+
+/* Hero social icons: theme-aware hover color (Mocha overrides) */
+.hero-social-icon:hover {
+  color: var(--color-purple);
+}
+
+[data-catppuccin="mocha"] .hero-social-icon:hover {
+  color: var(--color-orange);
+}
+
+/* Projects: ensure "Live Demo" text is readable on bg-blue in both flavors */
+.project-live-button {
+  color: var(--color-crust);
+}
+
+[data-catppuccin="latte"] .project-live-button {
+  color: var(--color-base);
+}
+
+/* Navbar: ensure "Get In Touch" text is readable on bg-linear-to-r from-blue to-sky */
+.navbar-cta {
+  color: var(--color-crust);
+}
+
+[data-catppuccin="latte"] .navbar-cta {
+  color: var(--color-base);
 }
 
 ::selection {

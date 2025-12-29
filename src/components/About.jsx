@@ -47,16 +47,16 @@ export default function About() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="text-white">About</span> <span className="text-purple">Me</span>
+            <span className="text-main">About</span> <span className="text-purple">Me</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue to-purple mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-blue to-purple mx-auto rounded-full"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* MERN Stack Cards */}
           <div className="space-y-8" data-aos="fade-right" data-aos-duration="800">
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <h3 className="text-2xl font-bold text-main mb-8 flex items-center gap-3">
               <span className="text-purple">{'{'}</span>
               MERN Stack
               <span className="text-purple">{'}'}</span>
@@ -68,12 +68,12 @@ export default function About() {
                 return (
                   <div
                     key={index}
-                    className={`group flex flex-col items-center justify-center p-6 rounded-2xl bg-[#181825] border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderColor}`}
+                    className={`group flex flex-col items-center justify-center p-6 rounded-2xl bg-mantle border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderColor}`}
                   >
                     <div className={`mb-4 p-4 rounded-full bg-white/5 transition-colors duration-300 ${item.bgColor}`}>
                       <IconComponent size={32} className={`transition-transform duration-300 group-hover:scale-110 ${item.color}`} />
                     </div>
-                    <h4 className="text-white font-bold text-base tracking-wide mb-1">{item.name}</h4>
+                    <h4 className="text-main font-bold text-[1rem] tracking-wide mb-1">{item.name}</h4>
                     <p className="text-gray-400 text-xs font-medium">{item.description}</p>
                   </div>
                 );
@@ -90,19 +90,19 @@ export default function About() {
               </p>
 
               <p>
-                I focus on writing <span className="text-gray-100 font-medium">self-documenting code</span>, optimizing <span className="text-green font-semibold">queries</span>, and building systems that are scalable and easy to maintain.
+                I focus on writing <span className="text-main font-medium">self-documenting code</span>, optimizing <span className="text-green font-semibold">queries</span>, and building systems that are scalable and easy to maintain.
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-5">
-              <div className="bg-[#181825] border border-white/5 rounded-2xl p-6 hover:border-blue/30 transition-colors group">
+              <div className="bg-mantle border border-white/5 rounded-2xl p-6 hover:border-blue/30 transition-colors group">
                 <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Projects Built</h4>
-                <p className="text-5xl font-extrabold text-white group-hover:text-blue transition-colors">5+</p>
+                <p className="text-5xl font-extrabold text-main group-hover:text-blue transition-colors">5+</p>
               </div>
-              <div className="bg-[#181825] border border-white/5 rounded-2xl p-6 hover:border-purple/30 transition-colors group">
+              <div className="bg-mantle border border-white/5 rounded-2xl p-6 hover:border-purple/30 transition-colors group">
                 <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Experience</h4>
-                <p className="text-5xl font-extrabold text-white group-hover:text-purple transition-colors">1+ <span className="text-xl text-gray-400 font-medium">Years</span></p>
+                <p className="text-5xl font-extrabold text-main group-hover:text-purple transition-colors">1+ <span className="text-xl text-gray-400 font-medium">Years</span></p>
               </div>
             </div>
 

@@ -4,6 +4,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import { applyCatppuccinTheme, getStoredCatppuccinFlavor } from './theme/catppuccinMocha.js'
+
+applyCatppuccinTheme(getStoredCatppuccinFlavor() ?? 'mocha')
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {

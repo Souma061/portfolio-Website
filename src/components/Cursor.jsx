@@ -61,7 +61,7 @@ export default function Cursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-8 h-8 border-2 border-[#7c3aed] shadow-[0_0_10px_#7c3aed50] rounded-full pointer-events-none z-[9999] opacity-0 transition-opacity duration-300 hidden md:block"
+      className="fixed top-0 left-0 w-8 h-8 border-2 border-purple shadow-lg shadow-purple/30 rounded-full pointer-events-none z-9999 opacity-0 transition-opacity duration-300 hidden md:block"
       style={{ willChange: 'transform' }}
     />
   );

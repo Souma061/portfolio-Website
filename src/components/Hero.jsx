@@ -23,11 +23,11 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-base">
 
       {/* Background Decor: diagonal lines (left) */}
-      <div className="absolute top-40 left-0 opacity-10 hidden lg:block">
+      <div className="absolute top-40 left-0 opacity-10 hidden lg:block text-main">
         <svg width="200" height="200" viewBox="0 0 200 200">
-          <line x1="0" y1="100" x2="100" y2="0" stroke="white" strokeWidth="20" />
-          <line x1="40" y1="100" x2="140" y2="0" stroke="white" strokeWidth="20" />
-          <line x1="80" y1="100" x2="180" y2="0" stroke="white" strokeWidth="20" />
+          <line x1="0" y1="100" x2="100" y2="0" stroke="currentColor" strokeWidth="20" />
+          <line x1="40" y1="100" x2="140" y2="0" stroke="currentColor" strokeWidth="20" />
+          <line x1="80" y1="100" x2="180" y2="0" stroke="currentColor" strokeWidth="20" />
         </svg>
       </div>
 
@@ -43,7 +43,7 @@ export default function Hero() {
 
             {/* Typography */}
             <div className="space-y-4">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tighter text-white">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tighter text-main">
                 Soumabrata
               </h1>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-purple tracking-tight">
@@ -75,7 +75,7 @@ export default function Hero() {
                       href={href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-subtext0 hover:text-purple transition-all transform hover:scale-110 block"
+                      className="hero-social-icon text-subtext0 transition-all transform hover:scale-110 block"
                       aria-label={tooltip}
                     >
                       <Icon size={32} />
@@ -83,7 +83,7 @@ export default function Hero() {
 
                     {/* Tooltip */}
                     <div
-                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max px-3 py-1 bg-orange text-xs font-bold rounded-lg shadow-lg transition-all duration-300 transform ${activeTooltip === index
+                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max px-3 py-1 bg-orange text-crust text-xs font-bold rounded-lg shadow-lg transition-all duration-300 transform ${activeTooltip === index
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-2 pointer-events-none'
                         }`}
@@ -98,14 +98,13 @@ export default function Hero() {
 
             {/* NPX Card (Cyan Bar Style) */}
             <div className="pt-6 w-full sm:w-auto flex flex-col sm:flex-row gap-4">
-              <div className="flex items-center gap-3 bg-[#181825] border border-white/10 rounded-xl px-4 py-3 w-full sm:w-fit shadow-lg shadow-purple/5 hover:border-purple/30 transition-all group">
+              <div className="flex items-center gap-3 bg-mantle border border-white/10 rounded-xl px-4 py-3 w-full sm:w-fit shadow-lg shadow-purple/5 hover:border-purple/30 transition-all group">
                 {/* Prompt Symbol */}
                 <span className="text-purple font-mono font-bold">$</span>
 
                 {/* Command Text */}
                 <span
-                  className="font-mono text-sm sm:text-base tracking-wide whitespace-nowrap font-bold"
-                  style={{ color: '#efe864d9' }}
+                  className="font-mono text-[0.875rem] sm:text-[1rem] tracking-wide whitespace-nowrap font-bold text-yellow"
                 >
                   npx soumabrata-dev@latest
                 </span>
@@ -113,7 +112,7 @@ export default function Hero() {
                 {/* Copy Button */}
                 <button
                   onClick={handleCopy}
-                  className="ml-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-all active:scale-95"
+                  className="ml-4 p-2 rounded-lg text-gray-400 hover:text-main hover:bg-white/10 transition-all active:scale-95"
                   title="Copy to clipboard"
                 >
                   {copied ? <Check size={16} className="text-green" /> : <Copy size={16} />}
@@ -125,7 +124,7 @@ export default function Hero() {
                 href="/resume.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#181825] border border-white/10 text-white rounded-xl px-5 py-3 shadow-lg shadow-purple/5 hover:border-purple/30 hover:bg-white/5 transition-all group active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base"
+                className="flex items-center justify-center gap-2 bg-mantle border border-white/10 text-main rounded-xl px-5 py-3 shadow-lg shadow-purple/5 hover:border-purple/30 hover:bg-white/5 transition-all group active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base"
               >
                 <FileText size={20} className="group-hover:text-purple transition-colors" />
                 <span>View Resume</span>
