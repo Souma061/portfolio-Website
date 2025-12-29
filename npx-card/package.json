@@ -1,6 +1,6 @@
 {
-  "name": "soumabrata.dev",
-  "version": "1.0.0",
+  "name": "soumabrata-dev",
+  "version": "1.0.1",
   "description": "My npx card",
   "main": "index.js",
   "bin": {

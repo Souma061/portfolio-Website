@@ -99,7 +99,7 @@ export default function Hero() {
 
                   {/* Text */}
                   <div className="flex-1 pl-6">
-                    <code className="text-white font-mono text-base sm:text-lg tracking-wide">npx soumabrata-dev</code>
+                    <code className="text-white font-mono text-base sm:text-lg tracking-wide">npx soumabrata-dev@latest</code>
                   </div>
 
                   {/* Copy Button */}
