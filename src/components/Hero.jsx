@@ -11,7 +11,7 @@ export default function Hero() {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('npx soumabrata-dev');
+    navigator.clipboard.writeText('npx soumabrata-dev@latest');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -91,28 +91,27 @@ export default function Hero() {
             </div>
 
             {/* NPX Card (Cyan Bar Style) */}
-            <div className="w-full sm:w-auto pt-4">
-              <div className="relative group w-full sm:w-auto">
-                <div className="relative z-10 flex items-center bg-[#11111b] border border-white/10 rounded-xl overflow-hidden w-full sm:w-[380px] h-14 shadow-lg transition-transform duration-300 hover:scale-[1.02]">
-                  {/* Left Cyan Bar */}
-                  <div className="w-14 h-full bg-cyan shrink-0"></div>
+            <div className="pt-6 w-full sm:w-auto">
+              <div className="flex items-center gap-3 bg-[#181825] border border-white/10 rounded-xl px-4 py-3 w-full sm:w-fit shadow-lg shadow-purple/5 hover:border-purple/30 transition-all group">
+                {/* Prompt Symbol */}
+                <span className="text-purple font-mono font-bold">$</span>
 
-                  {/* Text */}
-                  <div className="flex-1 pl-6">
-                    <code className="text-white font-mono text-base sm:text-lg tracking-wide">npx soumabrata-dev@latest</code>
-                  </div>
+                {/* Command Text */}
+                <span
+                  className="font-mono text-sm sm:text-base tracking-wide whitespace-nowrap font-bold"
+                  style={{ color: '#efe864d9' }}
+                >
+                  npx soumabrata-dev@latest
+                </span>
 
-                  {/* Copy Button */}
-                  <div className="pr-4">
-                    <button
-                      onClick={handleCopy}
-                      className="p-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-all bg-white/5"
-                      title="Copy to clipboard"
-                    >
-                      {copied ? <Check size={18} className="text-green" /> : <Copy size={18} />}
-                    </button>
-                  </div>
-                </div>
+                {/* Copy Button */}
+                <button
+                  onClick={handleCopy}
+                  className="ml-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-all active:scale-95"
+                  title="Copy to clipboard"
+                >
+                  {copied ? <Check size={16} className="text-green" /> : <Copy size={16} />}
+                </button>
               </div>
             </div>
 
