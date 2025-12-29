@@ -9,6 +9,7 @@ import ora from 'ora';
 
 // Themes
 const titleGradient = gradient(['#a855f7', '#ec4899']); // Purple to Pink for title
+const softGradient = gradient(['#fdf4ff', '#c4b5fd', '#a855f7']);
 
 // Data
 const data = {
@@ -29,24 +30,41 @@ const data = {
 const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const runFakeInstall = async () => {
+  const steps = [
+    { text: 'Resolving packages', ms: 300 },
+    { text: 'Fetching profile manifest', ms: 320 },
+    { text: 'Linking dependencies', ms: 360 },
+    { text: 'Building terminal UI bundle', ms: 450 },
+    { text: 'Finalizing', ms: 280 },
+  ];
+
+  const bar = (percent) => {
+    const width = 18;
+    const clamped = Math.max(0, Math.min(100, percent));
+    const filled = Math.round((clamped / 100) * width);
+    const empty = Math.max(0, width - filled);
+    return `${softGradient('█'.repeat(filled))}${chalk.gray('░'.repeat(empty))} ${chalk.hex('#c4b5fd')(`${clamped}%`)}`;
+  };
+
   console.log('');
-  const spinner = ora(chalk.dim('Resolving packages...')).start();
-  await sleep(300);
+  const spinner = ora({
+    text: chalk.dim(`${steps[0].text}…`) + chalk.gray(`  ${bar(0)}`),
+    spinner: 'dots',
+  }).start();
 
-  spinner.text = chalk.dim('Fetching dependency: ') + chalk.hex('#a855f7')('soumabrata-core@latest');
-  await sleep(300);
+  for (let i = 0; i < steps.length; i += 1) {
+    const pct = Math.round(((i + 1) / steps.length) * 100);
+    spinner.text = chalk.dim(`${steps[i].text}…`) + chalk.gray(`  ${bar(pct)}`);
+    await sleep(steps[i].ms);
+  }
 
-  spinner.text = chalk.dim('Fetching dependency: ') + chalk.hex('#ec4899')('awesome-skills@v10.0.0');
-  await sleep(300);
-
-  spinner.text = chalk.dim('Linking dependencies...');
-  await sleep(400);
-
-  spinner.text = chalk.dim('Building optimized production bundle...');
+  spinner.succeed(
+    chalk.green('Installed ') +
+    chalk.bold('Soumabrata Card') +
+    chalk.dim(' (visual-only)') +
+    chalk.gray(`  ${bar(100)}`)
+  );
   await sleep(500);
-
-  spinner.succeed(chalk.green('Successfully installed ') + chalk.bold('Soumabrata v1.0.0') + chalk.dim(' in 1.8s'));
-  await sleep(800);
 };
 
 const showCard = () => {

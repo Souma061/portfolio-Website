@@ -1,5 +1,5 @@
 import AOS from 'aos';
-import { Check, Copy, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
+import { Check, Copy, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
@@ -7,6 +7,7 @@ export default function Hero() {
   const [activeTooltip, setActiveTooltip] = useState(null);
 
   useEffect(() => {
+    AOS.init({ once: true });
     AOS.refresh();
   }, []);
 
@@ -19,7 +20,7 @@ export default function Hero() {
 
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#1e1e2e]">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-base">
 
       {/* Background Decor: diagonal lines (left) */}
       <div className="absolute top-40 left-0 opacity-10 hidden lg:block">
@@ -81,7 +82,12 @@ export default function Hero() {
                     </a>
 
                     {/* Tooltip */}
-                    <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max px-3 py-1 bg-orange text-base font-bold text-xs rounded-lg shadow-lg transition-all duration-300 transform ${activeTooltip === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+                    <div
+                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max px-3 py-1 bg-orange text-xs font-bold rounded-lg shadow-lg transition-all duration-300 transform ${activeTooltip === index
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-2 pointer-events-none'
+                        }`}
+                    >
                       {tooltip}
                       <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-orange"></div>
                     </div>
@@ -91,7 +97,7 @@ export default function Hero() {
             </div>
 
             {/* NPX Card (Cyan Bar Style) */}
-            <div className="pt-6 w-full sm:w-auto">
+            <div className="pt-6 w-full sm:w-auto flex flex-col sm:flex-row gap-4">
               <div className="flex items-center gap-3 bg-[#181825] border border-white/10 rounded-xl px-4 py-3 w-full sm:w-fit shadow-lg shadow-purple/5 hover:border-purple/30 transition-all group">
                 {/* Prompt Symbol */}
                 <span className="text-purple font-mono font-bold">$</span>
@@ -113,6 +119,17 @@ export default function Hero() {
                   {copied ? <Check size={16} className="text-green" /> : <Copy size={16} />}
                 </button>
               </div>
+
+              {/* View Resume Button */}
+              <a
+                href="/resume.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-[#181825] border border-white/10 text-white rounded-xl px-5 py-3 shadow-lg shadow-purple/5 hover:border-purple/30 hover:bg-white/5 transition-all group active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base"
+              >
+                <FileText size={20} className="group-hover:text-purple transition-colors" />
+                <span>View Resume</span>
+              </a>
             </div>
 
           </div>
@@ -121,7 +138,7 @@ export default function Hero() {
           <div className="flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
             <div className="animate-float">
               <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[3rem] overflow-hidden border-4 border-white/5 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:rotate-1">
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple/20 to-transparent mix-blend-overlay z-10"></div>
+                <div className="absolute inset-0 bg-linear-to-tr from-purple/20 to-transparent mix-blend-overlay z-10"></div>
                 <img
                   src="/profile.jpg"
                   alt="Soumabrata"
@@ -133,9 +150,11 @@ export default function Hero() {
 
         </div>
       </div>
-      {/* Notification Notification */}
+
+      {/* Notification */}
       <div
-        className={`fixed top-24 right-10 z-50 transition-all duration-300 transform ${copied ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'}`}
+        className={`fixed top-24 right-10 z-50 transition-all duration-300 transform ${copied ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
+          }`}
       >
         <div className="bg-white rounded-xl shadow-xl p-4 flex flex-col gap-1 border border-gray-100 min-w-[280px]">
           <div className="flex items-center gap-2">
