@@ -26,7 +26,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (isSubmitting) return;
     if (!import.meta.env.VITE_FORMSPREE_ENDPOINT) {
       alert('VITE_FORMSPREE_ENDPOINT is not defined in your .env file!');
       return;
