@@ -10,7 +10,7 @@ export default function useVisitorCount() {
   useEffect(() => {
     const docRef = doc(db, "portfolio", "stats"); // Collection: 'portfolio', Doc: 'stats'
     const VISITOR_KEY = 'visitor_timestamp';
-    const EXPIRY_TIME = 24 * 60 * 60 * 1000; // 24 Hours
+    const EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000; // ~30 days
 
     // 1. Set up Real-time Listener (READ)
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
