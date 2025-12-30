@@ -1,12 +1,14 @@
 import AOS from 'aos';
-import { Check, Copy, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
+import { Check, Copy, Eye, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import useVisitorCount from '../hooks/useVisitorCount.js';
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState(null);
   const imageCardRef = useRef(null);
   const imageRafRef = useRef(0);
+  const { visits, loading: visitsLoading } = useVisitorCount();
 
   useEffect(() => {
     AOS.refresh();
@@ -160,6 +162,18 @@ export default function Hero() {
                 <FileText size={20} className="group-hover:text-purple transition-colors" />
                 <span>View Resume</span>
               </a>
+            </div>
+
+            {/* Total Views Pill */}
+            <div className="w-full flex justify-center lg:justify-start">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface0/50 border border-surface1 shadow-lg shadow-purple/5"
+                aria-label="Total portfolio views"
+                title="Total portfolio views"
+              >
+                <Eye size={18} className="text-orange" />
+                <span className="text-subtext0 text-sm">{visitsLoading ? '…' : visits.toLocaleString()}</span>
+              </div>
             </div>
 
           </div>
