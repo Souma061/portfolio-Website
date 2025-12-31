@@ -144,45 +144,48 @@ export function I18nProvider({ children }) {
 
       setIsTranslating(true);
       try {
-        const [nextUi, nextProjectFields, nextSkillFields] = await Promise.all([
-          cachedUi
-            ? Promise.resolve(cachedUi)
-            : localizeObjectWithLingo(messagesEn, { sourceLocale: SOURCE_LOCALE, targetLocale: locale }),
-          cachedProjects
-            ? Promise.resolve(null)
-            : localizeObjectWithLingo(buildProjectsTranslatableObject(), {
-              sourceLocale: SOURCE_LOCALE,
-              targetLocale: locale,
-            }),
-          cachedSkills
-            ? Promise.resolve(null)
-            : localizeObjectWithLingo(buildSkillsTranslatableObject(), {
-              sourceLocale: SOURCE_LOCALE,
-              targetLocale: locale,
-            }),
-        ]);
+        const needsUi = !cachedUi;
+        const needsProjects = !cachedProjects;
+        const needsSkills = !cachedSkills;
+
+        const objectToTranslate = {
+          ...(needsUi ? messagesEn : null),
+          ...(needsProjects ? buildProjectsTranslatableObject() : null),
+          ...(needsSkills ? buildSkillsTranslatableObject() : null),
+        };
+
+        const translated = await localizeObjectWithLingo(objectToTranslate, {
+          sourceLocale: SOURCE_LOCALE,
+          targetLocale: locale,
+        });
+
+        if (!translated) return;
 
         if (cancelled) return;
 
-        if (!cachedUi && nextUi) {
+        if (needsUi) {
+          const nextUi = {};
+          for (const key of Object.keys(messagesEn)) {
+            nextUi[key] = typeof translated[key] === 'string' ? translated[key] : messagesEn[key];
+          }
           setUi(nextUi);
           safeWriteJson(STORAGE_KEYS.ui(locale), nextUi);
         }
 
-        if (!cachedProjects && nextProjectFields) {
+        if (needsProjects) {
           const localizedProjects = projectsEn.map((p) => ({
             ...p,
-            title: nextProjectFields[`projects.${p.id}.title`] ?? p.title,
-            description: nextProjectFields[`projects.${p.id}.description`] ?? p.description,
+            title: translated[`projects.${p.id}.title`] ?? p.title,
+            description: translated[`projects.${p.id}.description`] ?? p.description,
           }));
           setProjects(localizedProjects);
           safeWriteJson(STORAGE_KEYS.projects(locale), localizedProjects);
         }
 
-        if (!cachedSkills && nextSkillFields) {
+        if (needsSkills) {
           const localizedSkills = skillCategoriesEn.map((c) => ({
             ...c,
-            title: nextSkillFields[`skills.category.${c.title}`] ?? c.title,
+            title: translated[`skills.category.${c.title}`] ?? c.title,
           }));
           setSkills(localizedSkills);
           safeWriteJson(STORAGE_KEYS.skills(locale), stripSkillsForCache(localizedSkills));

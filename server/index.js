@@ -123,7 +123,7 @@ const server = http.createServer(async (req, res) => {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          params: { workflowId: crypto.randomUUID(), fast: false },
+          params: { workflowId: crypto.randomUUID(), fast: true },
           locale: { source: sourceLocale, target: targetLocale },
           data: objectToTranslate,
         }),
