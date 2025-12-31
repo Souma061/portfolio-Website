@@ -23,7 +23,7 @@ export default function Loading() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-base z-[9999] flex items-center justify-center">
+    <div className="fixed inset-0 bg-base z-9999 flex items-center justify-center">
       <div className="absolute inset-0 bg-linear-to-br from-base via-mantle to-base opacity-50"></div>
 
       <div className="relative z-10 flex flex-col items-center justify-center gap-8">
