@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Loading() {
   const [isVisible, setIsVisible] = useState(() => !sessionStorage.getItem('portfolio_loaded'));
+  const { t } = useI18n();
 
   useEffect(() => {
     if (isVisible) {
@@ -35,9 +37,9 @@ export default function Loading() {
 
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-2xl font-bold bg-linear-to-r from-blue to-sky bg-clip-text text-transparent">
-            Loading Portfolio
+            {t('loading.title')}
           </h2>
-          <p className="text-sm text-subtext0">Building something amazing...</p>
+          <p className="text-sm text-subtext0">{t('loading.subtitle')}</p>
         </div>
 
         <div className="flex gap-2">

@@ -2,6 +2,7 @@ import AOS from 'aos';
 import { Check, Copy, Eye, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import useVisitorCount from '../hooks/useVisitorCount.js';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
@@ -9,6 +10,7 @@ export default function Hero() {
   const imageCardRef = useRef(null);
   const imageRafRef = useRef(0);
   const { visits, loading: visitsLoading } = useVisitorCount();
+  const { t } = useI18n();
 
   useEffect(() => {
     AOS.refresh();
@@ -80,21 +82,21 @@ export default function Hero() {
                 Soumabrata
               </h1>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-purple tracking-tight">
-                Fullstack Dev.
+                {t('hero.role')}
               </h2>
               <p className="text-lg sm:text-xl text-subtext0 font-mono pt-4">
-                Building <span className="text-green">robust systems</span> with <span className="text-green">pixel-perfect UIs</span>.
+                {t('hero.tagline.before')} <span className="text-green">{t('hero.tagline.robust')}</span> {t('hero.tagline.middle')} <span className="text-green">{t('hero.tagline.pixel')}</span>{t('hero.tagline.after')}
               </p>
             </div>
 
             {/* Social Icons Row */}
             <div className="flex items-center gap-6 pt-2">
               {[
-                { Icon: Github, href: "https://github.com/Souma061", tooltip: "My Code" },
-                { Icon: Mail, href: "mailto:soumabrataghosh57@gmail.com", tooltip: "Send Email" },
-                { Icon: Linkedin, href: "https://www.linkedin.com/in/soumabrata-ghosh-85862530b/", tooltip: "Let's Connect" },
-                { Icon: Twitter, href: "https://x.com/SoumabrataGhosh", tooltip: "Follow Me" },
-                { Icon: User, href: "/resume.html", tooltip: "Yup, that's me" }
+                { Icon: Github, href: "https://github.com/Souma061", tooltip: t('hero.tooltip.myCode') },
+                { Icon: Mail, href: "mailto:soumabrataghosh57@gmail.com", tooltip: t('hero.tooltip.sendEmail') },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/soumabrata-ghosh-85862530b/", tooltip: t('hero.tooltip.letsConnect') },
+                { Icon: Twitter, href: "https://x.com/SoumabrataGhosh", tooltip: t('hero.tooltip.followMe') },
+                { Icon: User, href: "/resume.html", tooltip: t('hero.tooltip.thatsMe') }
               ].map((item, index) => {
                 const { Icon, href, tooltip } = item;
                 return (
@@ -146,7 +148,7 @@ export default function Hero() {
                 <button
                   onClick={handleCopy}
                   className="ml-4 p-2 rounded-lg text-gray-400 hover:text-main hover:bg-white/10 transition-all active:scale-95"
-                  title="Copy to clipboard"
+                  title={t('hero.copy.title')}
                 >
                   {copied ? <Check size={16} className="text-green" /> : <Copy size={16} />}
                 </button>
@@ -160,7 +162,7 @@ export default function Hero() {
                 className="flex items-center justify-center gap-2 bg-mantle border border-white/10 text-main rounded-xl px-5 py-3 shadow-lg shadow-purple/5 hover:border-purple/30 hover:bg-white/5 transition-all group active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base"
               >
                 <FileText size={20} className="group-hover:text-purple transition-colors" />
-                <span>View Resume</span>
+                <span>{t('hero.resume')}</span>
               </a>
             </div>
 
@@ -168,8 +170,8 @@ export default function Hero() {
             <div className="w-full flex justify-center lg:justify-start">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface0/50 border border-surface1 shadow-lg shadow-purple/5"
-                aria-label="Total portfolio views"
-                title="Total portfolio views"
+                aria-label={t('hero.views.aria')}
+                title={t('hero.views.title')}
               >
                 <Eye size={18} className="text-orange" />
                 <span className="text-subtext0 text-sm">{visitsLoading ? '…' : visits.toLocaleString()}</span>
@@ -210,12 +212,12 @@ export default function Hero() {
         className={`fixed top-24 right-10 z-50 transition-all duration-300 transform ${copied ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
           }`}
       >
-        <div className="bg-white rounded-xl shadow-xl p-4 flex flex-col gap-1 border border-gray-100 min-w-[280px]">
+        <div className="bg-white rounded-xl shadow-xl p-4 flex flex-col gap-1 border border-gray-100 min-w-70">
           <div className="flex items-center gap-2">
             <Check size={18} className="text-green" />
-            <span className="text-gray-900 font-bold text-sm">Copied to clipboard</span>
+            <span className="text-gray-900 font-bold text-sm">{t('hero.toast.copiedTitle')}</span>
           </div>
-          <p className="text-gray-500 text-xs pl-6">Make sure you run this in your terminal &lt;3</p>
+          <p className="text-gray-500 text-xs pl-6">{t('hero.toast.copiedSubtitle')}</p>
         </div>
       </div>
     </section>

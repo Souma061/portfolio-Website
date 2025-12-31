@@ -1,9 +1,10 @@
 import AOS from 'aos';
 import { ExternalLink, Github } from 'lucide-react';
 import { useEffect } from 'react';
-import { projects } from '../data/projects';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Projects() {
+  const { t, projects } = useI18n();
   useEffect(() => {
     AOS.refresh();
   }, []);
@@ -27,7 +28,7 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-subtext0 hover:text-main transition-colors p-2 hover:bg-surface0/50 rounded-full"
-            title="View Code"
+            title={t('projects.tooltip.viewCode')}
           >
             <Github size={20} />
           </a>
@@ -36,7 +37,7 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue hover:text-sapphire transition-colors p-2 hover:bg-blue/10 rounded-full"
-            title="Live Demo"
+            title={t('projects.tooltip.liveDemo')}
           >
             <ExternalLink size={20} />
           </a>
@@ -68,13 +69,13 @@ export default function Projects() {
         <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="font-mono text-4xl sm:text-5xl lg:text-6xl font-bold">
-              <span className="text-green">code</span>
+              <span className="text-green">{t('projects.header.code')}</span>
               <span className="text-purple">:</span>
-              <span className="text-blue">work</span>
+              <span className="text-blue">{t('projects.header.work')}</span>
             </span>
           </h2>
           <p className="text-subtext0 mt-4 text-lg">
-            <span className="text-purple font-medium">Scalable systems</span> and <span className="text-cyan font-medium">full-stack applications</span>
+            <span className="text-purple font-medium">{t('projects.sub.scalable')}</span> {t('projects.sub.and')} <span className="text-cyan font-medium">{t('projects.sub.fullstack')}</span>
           </p>
         </div>
 
@@ -124,7 +125,7 @@ export default function Projects() {
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface0 text-main font-medium hover:bg-surface1 transition-colors border border-surface1"
                   >
                     <Github size={18} />
-                    <span>Code</span>
+                    <span>{t('projects.button.code')}</span>
                   </a>
                   <a
                     href={project.live}
@@ -133,7 +134,7 @@ export default function Projects() {
                     className="project-live-button flex items-center gap-2 px-4 py-2 rounded-lg bg-blue text-[1rem] font-medium hover:bg-sapphire transition-colors shadow-lg shadow-blue/20"
                   >
                     <ExternalLink size={18} />
-                    <span>Live Demo</span>
+                    <span>{t('projects.button.liveDemo')}</span>
                   </a>
                 </div>
               </div>
@@ -143,8 +144,8 @@ export default function Projects() {
 
         {/* Mini Tools Header */}
         <div className="mb-12 text-center" data-aos="fade-up">
-          <h3 className="text-2xl font-bold text-main mb-2">Frontend Experiments & Tools</h3>
-          <p className="text-subtext0">Creative coding and utility applications</p>
+          <h3 className="text-2xl font-bold text-main mb-2">{t('projects.mini.title')}</h3>
+          <p className="text-subtext0">{t('projects.mini.subtitle')}</p>
         </div>
 
         {/* Mini Projects Grid */}
@@ -156,7 +157,7 @@ export default function Projects() {
 
         {/* CTA Button */}
         <div className="mt-20 text-center" data-aos="fade-up">
-          <p className="text-subtext0 mb-6">Want to see more code?</p>
+          <p className="text-subtext0 mb-6">{t('projects.cta.question')}</p>
           <a
             href="https://github.com/Souma061"
             target="_blank"
@@ -164,7 +165,7 @@ export default function Projects() {
             className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-surface1 text-main font-semibold hover:border-blue hover:bg-blue/10 transition-all duration-300"
           >
             <Github size={20} />
-            Visit My GitHub
+            {t('projects.cta.button')}
           </a>
         </div>
 

@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "node server/index.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "@catppuccin/palette": "^1.7.1",
@@ -15,6 +17,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "aos": "^2.3.4",
     "firebase": "^12.7.0",
+    "lingo.dev": "^0.117.23",
     "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -31,5 +34,11 @@
     "globals": "^16.5.0",
     "terser": "^5.44.1",
     "vite": "^7.2.4"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "^1.24.0",
+    "ai": "^5.0.117",
+    "next": "^15.4.10",
+    "tmp": "^0.2.5"
   }
 }

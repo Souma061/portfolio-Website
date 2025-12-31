@@ -1,8 +1,10 @@
 import AOS from 'aos';
 import { useEffect } from 'react';
-import { skillCategories, techStackIcons } from '../data/skills';
+import { techStackIcons } from '../data/skills';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Skills() {
+  const { t, skills: localizedSkillCategories } = useI18n();
   useEffect(() => {
     AOS.refresh();
   }, []);
@@ -15,17 +17,17 @@ export default function Skills() {
         {/* Header */}
         <div className="mb-20 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="text-main">Technical</span> <span className="text-purple">Arsenal</span>
+            <span className="text-main">{t('skills.title.technical')}</span> <span className="text-purple">{t('skills.title.arsenal')}</span>
           </h2>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface0/60 border border-surface1 text-sm font-mono text-subtext0">
             <span className="w-2 h-2 rounded-full bg-green animate-pulse"></span>
-            System Status: Optimal
+            {t('skills.status')}
           </div>
         </div>
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => {
+          {localizedSkillCategories.map((category, index) => {
             const Icon = category.icon;
             // distinct styles for each index to add variety
             const borderColors = [
@@ -86,7 +88,7 @@ export default function Skills() {
         {/* Tech Stack Marquee / Cloud */}
         <div className="mt-20 pt-10 border-t border-white/5" data-aos="fade-up">
           <p className="text-center font-mono text-xl mb-12 font-bold">
-            <span className="text-blue">Technologies</span> <span className="text-purple mx-2">I</span> <span className="text-green">Work With</span>
+            <span className="text-blue">{t('skills.tech.title1')}</span> <span className="text-purple mx-2">{t('skills.tech.title2')}</span> <span className="text-green">{t('skills.tech.title3')}</span>
           </p>
 
           <div className="flex flex-wrap justify-center gap-5 sm:gap-8">

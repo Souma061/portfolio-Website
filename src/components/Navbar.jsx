@@ -1,19 +1,21 @@
 import AOS from 'aos';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useI18n } from '../i18n/useI18n.js';
 import { applyCatppuccinTheme, getStoredCatppuccinFlavor, setStoredCatppuccinFlavor } from '../theme/catppuccinMocha.js';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [flavor, setFlavor] = useState(() => getStoredCatppuccinFlavor() ?? 'mocha');
+  const { locale, setLocale, locales, isTranslating, t } = useI18n();
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.home'), href: '#home' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
 
   const handleScroll = (e, href) => {
@@ -39,9 +41,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    // Ensure theme is applied if user loads mid-session.
-    applyCatppuccinTheme(flavor);
-
+    // Intentionally only sets up event listeners.
     const handleStorage = (e) => {
       if (e.key !== 'catppuccin-flavor') return;
       const next = getStoredCatppuccinFlavor() ?? 'mocha';
@@ -92,6 +92,11 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    // Ensure theme is applied if user loads mid-session.
+    applyCatppuccinTheme(flavor);
+  }, [flavor]);
+
   const toggleTheme = () => {
     const next = flavor === 'mocha' ? 'latte' : 'mocha';
     setFlavor(next);
@@ -130,22 +135,41 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center ml-4 lg:ml-6 gap-3 shrink-0">
+            <label className="sr-only" htmlFor="portfolio-language">
+              {t('nav.language.placeholder')}
+            </label>
+            <select
+              id="portfolio-language"
+              value={locale}
+              onChange={(e) => setLocale(e.target.value)}
+              disabled={isTranslating}
+              className="inline-block px-3 py-2 rounded-lg bg-mantle border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-white/5 transition-all text-sm font-medium"
+              aria-label={t('nav.language.placeholder')}
+              title={t('nav.language.placeholder')}
+            >
+              {locales.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
+
             <button
               type="button"
               onClick={toggleTheme}
               className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-mantle border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-white/5 transition-all"
-              aria-label={flavor === 'mocha' ? 'Switch to Latte theme' : 'Switch to Mocha theme'}
-              title={flavor === 'mocha' ? 'Switch to Latte' : 'Switch to Mocha'}
+              aria-label={flavor === 'mocha' ? t('nav.aria.switchToLatte') : t('nav.aria.switchToMocha')}
+              title={flavor === 'mocha' ? t('nav.title.switchToLatte') : t('nav.title.switchToMocha')}
             >
               {flavor === 'mocha' ? <Moon size={18} className="text-purple" /> : <Sun size={18} className="text-yellow" />}
-              <span className="text-sm font-medium">{flavor === 'mocha' ? 'Mocha' : 'Latte'}</span>
+              <span className="text-sm font-medium">{flavor === 'mocha' ? t('nav.theme.mocha') : t('nav.theme.latte')}</span>
             </button>
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
               className="navbar-cta px-4 lg:px-6 py-2 rounded-lg bg-linear-to-r from-blue to-sky text-[1rem] font-medium text-sm lg:text-[1rem] hover:from-sapphire hover:to-teal transition-all duration-300 shadow-lg hover:shadow-blue/50 whitespace-nowrap"
             >
-              Get In Touch
+              {t('nav.getInTouch')}
             </a>
           </div>
 
@@ -183,17 +207,35 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e, '#contact')}
               className="navbar-cta block px-3 py-2 rounded-md bg-linear-to-r from-blue to-sky text-[1rem] font-medium hover:from-sapphire hover:to-teal transition-all duration-300"
             >
-              Get In Touch
+              {t('nav.getInTouch')}
             </a>
+
+            <label className="sr-only" htmlFor="portfolio-language-mobile">
+              {t('nav.language.placeholder')}
+            </label>
+            <select
+              id="portfolio-language-mobile"
+              value={locale}
+              onChange={(e) => setLocale(e.target.value)}
+              disabled={isTranslating}
+              className="w-full block px-3 py-2 rounded-md bg-surface0/50 border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-surface0 transition-all"
+              aria-label={t('nav.language.placeholder')}
+            >
+              {locales.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
 
             <button
               type="button"
               onClick={toggleTheme}
               className="w-full flex items-center gap-2 px-3 py-2 rounded-md bg-surface0/50 border border-white/10 text-subtext1 hover:text-main hover:border-purple/30 hover:bg-surface0 transition-all"
-              aria-label={flavor === 'mocha' ? 'Switch to Latte theme' : 'Switch to Mocha theme'}
+              aria-label={flavor === 'mocha' ? t('nav.aria.switchToLatte') : t('nav.aria.switchToMocha')}
             >
               {flavor === 'mocha' ? <Moon size={18} className="text-purple" /> : <Sun size={18} className="text-yellow" />}
-              <span className="font-medium">Theme: {flavor === 'mocha' ? 'Mocha' : 'Latte'}</span>
+              <span className="font-medium">{t('nav.mobile.themePrefix')} {flavor === 'mocha' ? t('nav.theme.mocha') : t('nav.theme.latte')}</span>
             </button>
           </div>
         </div>

@@ -1,8 +1,10 @@
 import AOS from 'aos';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { useEffect } from 'react';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Footer() {
+  const { t } = useI18n();
 
 
   useEffect(() => {
@@ -46,9 +48,9 @@ export default function Footer() {
 
         {/* Text - Right Side */}
         <div className="text-gray-500 font-medium order-1 md:order-2 flex items-center gap-1">
-          <span>Made with</span>
+          <span>{t('footer.madeWith')}</span>
           <span className="text-purple heart-beat">❤</span>
-          <span>, Thank You!</span>
+          <span>{t('footer.thankYou')}</span>
         </div>
 
       </div>

@@ -1,0 +1,332 @@
+﻿{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@lingo.dev/_compiler": {
+      "name": "@lingo.dev/_compiler",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@openrouter/ai-sdk-provider",
+        "ai"
+      ],
+      "effects": [
+        "lingo.dev"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@lingo.dev/_compiler"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@lingo.dev/_react": {
+      "name": "@lingo.dev/_react",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "next"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@lingo.dev/_react"
+      ],
+      "fixAvailable": true
+    },
+    "@modelcontextprotocol/sdk": {
+      "name": "@modelcontextprotocol/sdk",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1111155,
+          "name": "@modelcontextprotocol/sdk",
+          "dependency": "@modelcontextprotocol/sdk",
+          "title": "Model Context Protocol (MCP) TypeScript SDK does not enable DNS rebinding protection by default",
+          "url": "https://github.com/advisories/GHSA-w48q-cv73-mx4w",
+          "severity": "high",
+          "cwe": [
+            "CWE-350",
+            "CWE-1188"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<1.24.0"
+        }
+      ],
+      "effects": [
+        "lingo.dev"
+      ],
+      "range": "<1.24.0",
+      "nodes": [
+        "node_modules/@modelcontextprotocol/sdk"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@openrouter/ai-sdk-provider": {
+      "name": "@openrouter/ai-sdk-provider",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "ai"
+      ],
+      "effects": [
+        "@lingo.dev/_compiler",
+        "lingo.dev"
+      ],
+      "range": "0.6.0 - 0.7.5",
+      "nodes": [
+        "node_modules/@openrouter/ai-sdk-provider"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "ai": {
+      "name": "ai",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1111095,
+          "name": "ai",
+          "dependency": "ai",
+          "title": "Vercel’s AI SDK's filetype whitelists can be bypassed when uploading files",
+          "url": "https://github.com/advisories/GHSA-rwvc-j5jr-mgvh",
+          "severity": "low",
+          "cwe": [
+            "CWE-20",
+            "CWE-682"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<5.0.52"
+        },
+        "jsondiffpatch"
+      ],
+      "effects": [
+        "@lingo.dev/_compiler",
+        "@openrouter/ai-sdk-provider",
+        "lingo.dev"
+      ],
+      "range": "<=5.0.51",
+      "nodes": [
+        "node_modules/@lingo.dev/_compiler/node_modules/ai",
+        "node_modules/ai",
+        "node_modules/lingo.dev/node_modules/ai"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "external-editor": {
+      "name": "external-editor",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "tmp"
+      ],
+      "effects": [
+        "lingo.dev"
+      ],
+      "range": ">=1.1.1",
+      "nodes": [
+        "node_modules/external-editor"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "jsondiffpatch": {
+      "name": "jsondiffpatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1108189,
+          "name": "jsondiffpatch",
+          "dependency": "jsondiffpatch",
+          "title": "jsondiffpatch is vulnerable to Cross-site Scripting (XSS) via HtmlFormatter::nodeBegin",
+          "url": "https://github.com/advisories/GHSA-33vc-wfww-vjfv",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 4.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<0.7.2"
+        }
+      ],
+      "effects": [
+        "ai"
+      ],
+      "range": "<0.7.2",
+      "nodes": [
+        "node_modules/jsondiffpatch"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "lingo.dev": {
+      "name": "lingo.dev",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@lingo.dev/_compiler",
+        "@lingo.dev/_react",
+        "@modelcontextprotocol/sdk",
+        "@openrouter/ai-sdk-provider",
+        "ai",
+        "external-editor"
+      ],
+      "effects": [],
+      "range": ">=0.70.3",
+      "nodes": [
+        "node_modules/lingo.dev"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    },
+    "next": {
+      "name": "next",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1107228,
+          "name": "next",
+          "dependency": "next",
+          "title": "Next.js Affected by Cache Key Confusion for Image Optimization API Routes",
+          "url": "https://github.com/advisories/GHSA-g5qg-72qw-gw5v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-524"
+          ],
+          "cvss": {
+            "score": 6.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": ">=15.0.0 <=15.4.4"
+        },
+        {
+          "source": 1107514,
+          "name": "next",
+          "dependency": "next",
+          "title": "Next.js Content Injection Vulnerability for Image Optimization",
+          "url": "https://github.com/advisories/GHSA-xv57-4mr9-wg8v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-20"
+          ],
+          "cvss": {
+            "score": 4.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=15.0.0 <=15.4.4"
+        },
+        {
+          "source": 1107515,
+          "name": "next",
+          "dependency": "next",
+          "title": "Next.js Improper Middleware Redirect Handling Leads to SSRF",
+          "url": "https://github.com/advisories/GHSA-4342-x723-ch2f",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-918"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+          },
+          "range": ">=15.0.0-canary.0 <15.4.7"
+        }
+      ],
+      "effects": [
+        "@lingo.dev/_react"
+      ],
+      "range": "15.0.0-canary.0 - 15.4.6",
+      "nodes": [
+        "node_modules/next"
+      ],
+      "fixAvailable": true
+    },
+    "tmp": {
+      "name": "tmp",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1109537,
+          "name": "tmp",
+          "dependency": "tmp",
+          "title": "tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter",
+          "url": "https://github.com/advisories/GHSA-52f5-9888-hmc6",
+          "severity": "low",
+          "cwe": [
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 2.5,
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<=0.2.3"
+        }
+      ],
+      "effects": [
+        "external-editor"
+      ],
+      "range": "<=0.2.3",
+      "nodes": [
+        "node_modules/tmp"
+      ],
+      "fixAvailable": {
+        "name": "lingo.dev",
+        "version": "0.79.5",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 4,
+      "moderate": 4,
+      "high": 2,
+      "critical": 0,
+      "total": 10
+    },
+    "dependencies": {
+      "prod": 781,
+      "dev": 102,
+      "optional": 112,
+      "peer": 65,
+      "peerOptional": 0,
+      "total": 1024
+    }
+  }
+}

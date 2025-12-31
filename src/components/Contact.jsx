@@ -1,8 +1,10 @@
 import AOS from 'aos';
 import { Github, Linkedin, Mail, MapPin, Send, Twitter } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function Contact() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +29,7 @@ export default function Contact() {
     e.preventDefault();
     if (isSubmitting) return;
     if (!import.meta.env.VITE_FORMSPREE_ENDPOINT) {
-      alert('VITE_FORMSPREE_ENDPOINT is not defined in your .env file!');
+      alert(t('contact.envMissing'));
       return;
     }
 
@@ -51,7 +53,7 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Message sent successfully!'
+          message: t('contact.status.success')
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -62,7 +64,7 @@ export default function Contact() {
       console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message. Check console for details.'
+        message: t('contact.status.error')
       });
     } finally {
       setIsSubmitting(false);
@@ -79,10 +81,10 @@ export default function Contact() {
         {/* Section Title */}
         <div className="text-center mb-12" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-main tracking-tight">
-            Let's <span className="text-transparent bg-clip-text bg-linear-to-r from-purple to-cyan">Connect</span>
+            {t('contact.title.lets')} <span className="text-transparent bg-clip-text bg-linear-to-r from-purple to-cyan">{t('contact.title.connect')}</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto text-lg">
-            Have a project in mind or just want to say hi? I'd love to hear from you.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -99,8 +101,8 @@ export default function Contact() {
 
                 <div className="relative z-10 space-y-10">
                   <div>
-                    <h3 className="text-2xl font-bold text-main mb-2">Contact Information</h3>
-                    <p className="text-gray-400">Fill out the form or reach out directly.</p>
+                    <h3 className="text-2xl font-bold text-main mb-2">{t('contact.info.title')}</h3>
+                    <p className="text-gray-400">{t('contact.info.subtitle')}</p>
                   </div>
 
                   <div className="space-y-6">
@@ -121,7 +123,8 @@ export default function Contact() {
                 </div>
 
                 <div className="relative z-10 mt-10 md:mt-0">
-                  <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Follow Me</h4>
+                  <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">{t('contact.followMe')}</h4>
+
                   <div className="flex gap-3">
                     {[
                       { Icon: Linkedin, href: "https://www.linkedin.com/in/soumabrata-ghosh-85862530b/", color: "hover:bg-blue hover:border-blue" },
@@ -169,7 +172,7 @@ export default function Contact() {
                         required
                       />
                       <label htmlFor="contact-name" className="absolute left-1 -top-3.5 text-sm text-purple transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-purple">
-                        Your Name
+                        {t('contact.form.name')}
                       </label>
                     </div>
 
@@ -185,7 +188,7 @@ export default function Contact() {
                         required
                       />
                       <label htmlFor="contact-email" className="absolute left-1 -top-3.5 text-sm text-cyan transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-cyan">
-                        Your Email
+                        {t('contact.form.email')}
                       </label>
                     </div>
                   </div>
@@ -202,7 +205,7 @@ export default function Contact() {
                       required
                     />
                     <label htmlFor="contact-subject" className="absolute left-1 -top-3.5 text-sm text-pink transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-pink">
-                      Subject
+                      {t('contact.form.subject')}
                     </label>
                   </div>
 
@@ -213,7 +216,7 @@ export default function Contact() {
                       onChange={handleChange}
                       rows="4"
                       className="peer w-full bg-slate-900/30 rounded-xl border border-gray-700 py-3 px-4 text-main placeholder-gray-500 focus:outline-none focus:border-blue transition-all resize-none"
-                      placeholder="How can I help you?"
+                      placeholder={t('contact.form.messagePlaceholder')}
                       required
                     />
                   </div>
@@ -226,7 +229,7 @@ export default function Contact() {
                     >
                       <div className="absolute inset-0 w-full h-full bg-linear-to-r from-purple via-cyan to-blue opacity-0 group-hover:opacity-20 transition-opacity" />
                       <div className="relative flex items-center justify-center gap-2">
-                        <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                        <span>{isSubmitting ? t('contact.form.sending') : t('contact.form.send')}</span>
                         <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </div>
                     </button>

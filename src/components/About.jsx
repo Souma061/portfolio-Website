@@ -1,13 +1,15 @@
 import AOS from 'aos';
 import { Code2, Database, Globe, Zap } from 'lucide-react';
 import { useEffect } from 'react';
+import { useI18n } from '../i18n/useI18n.js';
 
 export default function About() {
+  const { t } = useI18n();
   const mernStack = [
     {
       icon: Globe,
       name: 'MongoDB',
-      description: 'NoSQL Database',
+      description: t('about.mern.mongo'),
       color: 'text-green',
       borderColor: 'group-hover:border-green/50',
       bgColor: 'group-hover:bg-green/10',
@@ -15,7 +17,7 @@ export default function About() {
     {
       icon: Code2,
       name: 'Express.js',
-      description: 'Backend Framework',
+      description: t('about.mern.express'),
       color: 'text-subtext0',
       borderColor: 'group-hover:border-subtext0/50',
       bgColor: 'group-hover:bg-subtext0/10',
@@ -23,7 +25,7 @@ export default function About() {
     {
       icon: Zap,
       name: 'React.js',
-      description: 'Frontend Library',
+      description: t('about.mern.react'),
       color: 'text-sky',
       borderColor: 'group-hover:border-sky/50',
       bgColor: 'group-hover:bg-sky/10',
@@ -31,7 +33,7 @@ export default function About() {
     {
       icon: Database,
       name: 'Node.js',
-      description: 'Runtime Environment',
+      description: t('about.mern.node'),
       color: 'text-green',
       borderColor: 'group-hover:border-green/50',
       bgColor: 'group-hover:bg-green/10',
@@ -47,7 +49,7 @@ export default function About() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center" data-aos="fade-up" data-aos-duration="800">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="text-main">About</span> <span className="text-purple">Me</span>
+            <span className="text-main">{t('about.title.about')}</span> <span className="text-purple">{t('about.title.me')}</span>
           </h2>
           <div className="w-24 h-1 bg-linear-to-r from-blue to-purple mx-auto rounded-full"></div>
         </div>
@@ -58,7 +60,7 @@ export default function About() {
           <div className="space-y-8" data-aos="fade-right" data-aos-duration="800">
             <h3 className="text-2xl font-bold text-main mb-8 flex items-center gap-3">
               <span className="text-purple">{'{'}</span>
-              MERN Stack
+              {t('about.mern')}
               <span className="text-purple">{'}'}</span>
             </h3>
 
@@ -85,24 +87,29 @@ export default function About() {
           <div className="space-y-8" data-aos="fade-left" data-aos-duration="800">
             <div className="space-y-6 text-xl text-gray-300 leading-relaxed font-light">
               <p>
-                Hello, I am <span className="text-yellow font-semibold">Soumabrata Ghosh</span>. I am obsessed with <span className="text-purple font-semibold">API performance</span> and <span className="text-blue font-semibold">database architecture</span>.
-                While I enjoy building sleek frontends with <span className="text-cyan font-semibold">React</span>, my true passion lies in designing the <span className="text-pink font-semibold">logic</span> that happens under the hood.
+                {t('about.p1.a')} <span className="text-yellow font-semibold">Soumabrata Ghosh</span>
+                {t('about.p1.b')} <span className="text-purple font-semibold">API performance</span> {t('about.p1.c')}{' '}
+                <span className="text-blue font-semibold">database architecture</span>
+                {t('about.p1.d')} <span className="text-cyan font-semibold">React</span>
+                {t('about.p1.e')} <span className="text-pink font-semibold">logic</span> {t('about.p1.f')}
               </p>
 
               <p>
-                I focus on writing <span className="text-main font-medium">self-documenting code</span>, optimizing <span className="text-green font-semibold">queries</span>, and building systems that are scalable and easy to maintain.
+                {t('about.p2.a')} <span className="text-main font-medium">self-documenting code</span>
+                {t('about.p2.b')} <span className="text-green font-semibold">queries</span>
+                {t('about.p2.c')}
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-5">
               <div className="bg-mantle border border-white/5 rounded-2xl p-6 hover:border-blue/30 transition-colors group">
-                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Projects Built</h4>
+                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">{t('about.stats.projectsBuilt')}</h4>
                 <p className="text-5xl font-extrabold text-main group-hover:text-blue transition-colors">5+</p>
               </div>
               <div className="bg-mantle border border-white/5 rounded-2xl p-6 hover:border-purple/30 transition-colors group">
-                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">Experience</h4>
-                <p className="text-5xl font-extrabold text-main group-hover:text-purple transition-colors">1+ <span className="text-xl text-gray-400 font-medium">Years</span></p>
+                <h4 className="text-gray-400 font-bold mb-2 text-sm uppercase tracking-wider">{t('about.stats.experience')}</h4>
+                <p className="text-5xl font-extrabold text-main group-hover:text-purple transition-colors">1+ <span className="text-xl text-gray-400 font-medium">{t('about.stats.years')}</span></p>
               </div>
             </div>
 
@@ -111,7 +118,7 @@ export default function About() {
                 href="#contact"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-purple text-white font-bold text-lg hover:bg-purple/90 transition-all duration-300 shadow-lg shadow-purple/20 hover:shadow-purple/40 hover:-translate-y-1"
               >
-                Let's Collaborate
+                {t('about.cta')}
               </a>
             </div>
           </div>
