@@ -105,6 +105,8 @@ export default function Hero() {
                     className="relative group cursor-pointer"
                     onMouseEnter={() => setActiveTooltip(index)}
                     onMouseLeave={() => setActiveTooltip(null)}
+                    onFocus={() => setActiveTooltip(index)}
+                    onBlur={() => setActiveTooltip(null)}
                   >
                     <a
                       href={href}

@@ -14,7 +14,7 @@ export default function Projects() {
 
   const ProjectCard = ({ project, index }) => (
     <div
-      className="bg-linear-to-br from-surface0/50 to-mantle/50 border border-white/10 rounded-lg p-6 hover:border-blue/50 transition-all duration-300 group h-full hover:shadow-lg hover:shadow-blue/10"
+      className="bg-linear-to-br from-surface0/50 to-mantle/50 border border-white/10 rounded-lg p-6 hover:border-blue/50 focus-within:border-blue/50 transition-all duration-300 group h-full hover:shadow-lg hover:shadow-blue/10 focus-within:shadow-lg focus-within:shadow-blue/10"
       data-aos="fade-up"
       data-aos-delay={index * 100}
     >
@@ -84,7 +84,7 @@ export default function Projects() {
           {majorProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-mantle border border-surface0 rounded-2xl overflow-hidden hover:border-purple/50 transition-all duration-300"
+              className="group relative bg-mantle border border-surface0 rounded-2xl overflow-hidden hover:border-purple/50 focus-within:border-purple/50 transition-all duration-300"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >

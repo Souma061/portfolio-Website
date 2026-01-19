@@ -99,18 +99,20 @@ export default function Skills() {
               return (
                 <div
                   key={index}
-                  className="group flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                  className="group flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 cursor-pointer focus:outline-none"
+                  role="figure"
+                  tabIndex="0"
                   data-aos="zoom-in"
                   data-aos-delay={index * 50}
                 >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/5 p-4 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 shadow-lg group-hover:shadow-purple/20">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/5 p-4 flex items-center justify-center group-hover:bg-white/10 group-focus:bg-white/10 group-hover:border-white/20 group-focus:border-white/20 transition-all duration-300 shadow-lg group-hover:shadow-purple/20 group-focus:shadow-purple/20">
                     <img
                       src={tech.src}
                       alt={tech.name}
-                      className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                      className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-focus:grayscale-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-focus:scale-110"
                     />
                   </div>
-                  <span className={`text-sm font-semibold ${colorClass} group-hover:text-main transition-colors`}>{tech.name}</span>
+                  <span className={`text-sm font-semibold ${colorClass} group-hover:text-main group-focus:text-main transition-colors`}>{tech.name}</span>
                 </div>
               );
             })}

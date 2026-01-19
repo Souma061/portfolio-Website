@@ -107,14 +107,14 @@ export default function Contact() {
 
                   <div className="space-y-6">
                     <a href="mailto:soumabrataghosh57@gmail.com" className="flex items-center gap-4 text-gray-300 hover:text-purple transition-colors group">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-purple/50 group-hover:bg-purple/10 transition-all">
+                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-purple/50 group-hover:bg-purple/10 group-focus:border-purple/50 group-focus:bg-purple/10 transition-all">
                         <Mail size={20} />
                       </div>
                       <span className="font-medium break-all">soumabrataghosh57@gmail.com</span>
                     </a>
 
                     <div className="flex items-center gap-4 text-gray-300 hover:text-cyan transition-colors group cursor-default">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-cyan/50 group-hover:bg-cyan/10 transition-all">
+                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-cyan/50 group-hover:bg-cyan/10 group-focus:border-cyan/50 group-focus:bg-cyan/10 transition-all">
                         <MapPin size={20} />
                       </div>
                       <span className="font-medium">Howrah, West Bengal, India</span>
@@ -138,7 +138,7 @@ export default function Contact() {
                           href={href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-main ${color} transition-all duration-300 shadow-lg hover:-translate-y-1`}
+                          className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-main focus:text-main ${color} transition-all duration-300 shadow-lg hover:-translate-y-1 focus:-translate-y-1`}
                         >
                           <Icon size={20} />
                         </a>

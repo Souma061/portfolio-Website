@@ -154,8 +154,13 @@ button:hover {
   border-color: var(--color-blue);
 }
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:focus-visible,
+a:focus,
+a:focus-visible,
+[tabindex="0"]:focus,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 2px;
 }
 
 /* Text Reveal Animation */
