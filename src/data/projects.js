@@ -1,8 +1,8 @@
 import blogImg from "../assets/images/Blog.jpeg";
-import stellarium from "../assets/images/stellarium.jpeg";
+import linguaChat from "../assets/images/linguachat.jpeg";
 import metriq from "../assets/images/metriq.jpeg";
 import sonic_waves from "../assets/images/sonic_waves.jpeg";
-import linguaChat from "../assets/images/linguachat.jpeg";
+import stellarium from "../assets/images/stellarium.jpeg";
 export const projects = [
   {
     id: 1,
@@ -21,16 +21,17 @@ export const projects = [
   },
   {
     id: 2,
-    year: "2025 (Ongoing)",
+    year: "2026",
     title: "LinguaChat - Real-Time Chat",
     description:
-      "Engineered a low-latency chat infrastructure using Socket.io and Node.js. Integrated AI-driven translation pipelines to process messages on-the-fly.",
+      "LinguaChat is a full-stack, real-time multilingual chat application. Users speaking different languages can join the same room and communicate effortlessly — every message is automatically translated into each participant's preferred language using the Lingo.dev AI translation engine.",
+
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io"],
     status: "completed",
     github: "https://github.com/Souma061/LinguaChat",
-    live: "https://linguachat-dva1.onrender.com/",
+    live: "https://lingua-chat.vercel.app/",
     category: "major",
-    img:linguaChat,
+    img: linguaChat,
     role: "Backend Architect",
     metrics: "< 50ms Latency",
   },
@@ -45,7 +46,7 @@ export const projects = [
     github: "https://github.com/Souma061/Stellarium",
     live: "https://stellarium-ecru.vercel.app/",
     category: "mini",
-    img:stellarium,
+    img: stellarium,
     role: "Frontend Designer",
   },
   {
