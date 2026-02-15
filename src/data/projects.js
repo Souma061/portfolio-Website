@@ -1,5 +1,5 @@
 import blogImg from "../assets/images/Blog.jpeg";
-import linguaChat from "../assets/images/linguachat.jpeg";
+import linguaChat from "../assets/images/linguachat.jpg";
 import metriq from "../assets/images/metriq.jpeg";
 import sonic_waves from "../assets/images/sonic_waves.jpeg";
 import stellarium from "../assets/images/stellarium.jpeg";
