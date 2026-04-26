@@ -1,4 +1,5 @@
-import blogImg from "../assets/images/Blog.jpeg";
+// import blogImg from "../assets/images/Blog.jpeg";
+import EventVault from "../assets/images/Eventvault.jpeg";
 import linguaChat from "../assets/images/linguachat.jpg";
 import metriq from "../assets/images/metriq.jpeg";
 import sonic_waves from "../assets/images/sonic_waves.jpeg";
@@ -6,18 +7,18 @@ import stellarium from "../assets/images/stellarium.jpeg";
 export const projects = [
   {
     id: 1,
-    year: "2025",
-    title: "Full-Stack Blog Platform",
+    year: "2026",
+    title: "EventVault - Event Booking Platform",
     description:
-      "Designed a scalable content management system using React and Appwrite. Implemented role-based access control (RBAC) and real-time state management with Redux.",
-    technologies: ["React.js", "Redux", "Tailwind CSS", "Appwrite"],
+      "A full-stack event booking application built with FastAPI (backend) and React (frontend) with TypeScript. This service allows users to browse events, book tickets, manage bookings, and process payments securely.",
+    technologies: ["FastAPI", "CashFree", "PostgreSQL", "typescript", "React.js", "Redux", "Tailwind CSS"],
     status: "completed",
-    github: "https://github.com/Souma061/Blog-App",
-    live: "https://postmee-123.vercel.app/",
+    github: "https://github.com/Souma061/Event-Booking-Service",
+    live: "https://event-booking-service.vercel.app/",
     category: "major",
-    img: blogImg,
-    role: "Full Stack Developer",
-    metrics: "95% Lighthouse Score",
+    img: EventVault,
+    role: "Full Stack",
+    metrics: "API response times (p95, p99) < 200ms",
   },
   {
     id: 2,
