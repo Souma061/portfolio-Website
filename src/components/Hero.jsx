@@ -1,7 +1,7 @@
 import AOS from 'aos';
 import { Check, Copy, Eye, FileText, Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import useVisitorCount from '../hooks/useVisitorCount.js';
+import useVisitorCount from '../hooks/useSupabaseVisitorCount.js';
 import { useI18n } from '../i18n/useI18n.js';
 
 export default function Hero() {
