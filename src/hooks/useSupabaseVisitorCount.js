@@ -7,7 +7,7 @@ export default function useVisitorCount() {
   const hasIncremented = useRef(false);
 
   useEffect(() => {
-    const VISITOR_KEY = 'visitor_timestamp';
+    const VISITOR_KEY = 'visitor_timestamp_v2';
     const EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000; // ~30 days
 
     // Set up real-time listener for view count
