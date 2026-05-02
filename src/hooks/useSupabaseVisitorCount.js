@@ -46,35 +46,41 @@ export default function useVisitorCount() {
       const currentTime = new Date().getTime();
       let shouldIncrement = false;
 
-      if (!storedData) {
-        shouldIncrement = true;
-      } else {
-        const { timestamp } = JSON.parse(storedData);
-        if (currentTime - timestamp > EXPIRY_TIME) {
+      try {
+        if (!storedData) {
           shouldIncrement = true;
+        } else {
+          const { timestamp } = JSON.parse(storedData);
+          if (currentTime - timestamp > EXPIRY_TIME) {
+            shouldIncrement = true;
+          }
         }
+      } catch {
+        shouldIncrement = true;
       }
 
       if (shouldIncrement) {
         hasIncremented.current = true;
 
         try {
-          // Update Local Storage immediately to block subsequent reloads
-          localStorage.setItem(VISITOR_KEY, JSON.stringify({
-            visited: true,
-            timestamp: currentTime
-          }));
-
           // Increment view count in Supabase
           const { data, error } = await supabase.rpc('increment_portfolio_view');
 
           if (error) {
             console.error('Error incrementing view count:', error);
+            await fetchViewCount();
           } else {
+            // Update Local Storage after the write succeeds.
+            localStorage.setItem(VISITOR_KEY, JSON.stringify({
+              visited: true,
+              timestamp: currentTime
+            }));
             setVisits(data);
+            setLoading(false);
           }
         } catch (error) {
           console.error('Error updating visitor count:', error);
+          await fetchViewCount();
         }
       } else {
         // Just fetch the current count if we're not incrementing
