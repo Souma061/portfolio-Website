@@ -51,12 +51,15 @@ npm install
 
 Create a local `.env` (ignored by git). Do **not** commit secrets.
 
-Server-side only (required for translation):
+Server-side only:
 
 - `LINGO_API_KEY` — used by the API route `POST /api/lingo/localizeObject`
+- `VISITOR_COUNT_SALT` — optional but recommended; used by `POST /api/visitor-count` to hash visitor IPs before sending them to Supabase
 
 Client-side (public-by-design; values end up in the browser bundle when prefixed with `VITE_`):
 
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
 - `VITE_FORMSPREE_ENDPOINT`
 - `VITE_FIREBASE_API_KEY`
 - `VITE_FIREBASE_AUTH_DOMAIN`
@@ -89,6 +92,7 @@ This repo supports Vercel serverless functions under `api/`.
 1. Import the repo into Vercel.
 2. Add environment variables in Vercel Project → Settings → Environment Variables:
    - `LINGO_API_KEY` (server-side)
+   - `VISITOR_COUNT_SALT` (server-side, any long random string)
    - Any `VITE_*` values used by the client
 3. Deploy.
 
@@ -121,6 +125,7 @@ src/
 	theme/
 api/
 	health.js
+	visitor-count.js
 	lingo/
 		localizeObject.js
 server/

@@ -14,11 +14,12 @@
    - Execute the SQL in `supabase/migrations/0001_create_portfolio_views.sql` in your Supabase SQL editor
 
 4. **Set up Row Level Security (RLS):**
-   - The migration enables RLS on `portfolio_views`
+   - The migration enables RLS on `portfolio_views` and `portfolio_view_visitors`
    - Public visitors get read access through the `Allow public read` policy
-   - View increments happen through the `increment_portfolio_view()` RPC function, which runs with owner privileges
+   - View increments happen through the `increment_portfolio_view(visitor_key)` RPC function, which runs with owner privileges
+   - The app calls `/api/visitor-count`, which hashes the request IP and sends only that hash to Supabase for 30-day deduping
 
 5. **Test the implementation:**
    - Restart your development server
    - Visit your portfolio to trigger the view counter
-   - If you already loaded the site before fixing Supabase, clear `visitor_timestamp` from your browser's local storage before retesting
+   - Opening the site in another browser on the same public IP should show the same count without incrementing again

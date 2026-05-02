@@ -42,6 +42,34 @@ function getApiKey() {
   ).trim().replace(/^"|"$/g, '');
 }
 
+function getClientIp(req) {
+  const forwardedFor = req.headers['x-forwarded-for'];
+  const forwardedIp = Array.isArray(forwardedFor) ? forwardedFor[0] : forwardedFor;
+  const firstForwardedIp = forwardedIp?.split(',')[0]?.trim();
+
+  return (
+    req.headers['x-real-ip'] ||
+    req.headers['cf-connecting-ip'] ||
+    firstForwardedIp ||
+    req.socket?.remoteAddress ||
+    ''
+  ).toString();
+}
+
+function getVisitorKey(req) {
+  const salt = (
+    process.env.VISITOR_COUNT_SALT ||
+    process.env.SUPABASE_JWT_SECRET ||
+    process.env.VITE_SUPABASE_URL ||
+    'portfolio-visitor-count'
+  ).trim();
+
+  return crypto
+    .createHash('sha256')
+    .update(`${salt}:${getClientIp(req)}`)
+    .digest('hex');
+}
+
 function sendJson(res, statusCode, data) {
   const body = JSON.stringify(data);
   res.writeHead(statusCode, {
@@ -92,6 +120,32 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === '/api/health') {
       return sendJson(res, 200, { ok: true });
+    }
+
+    if (url.pathname === '/api/visitor-count' && req.method === 'POST') {
+      const supabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || '').trim();
+      const supabaseKey = (process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || '').trim();
+
+      if (!supabaseUrl || !supabaseKey) {
+        return sendJson(res, 500, { error: 'Missing Supabase server env vars' });
+      }
+
+      const response = await fetch(`${supabaseUrl}/rest/v1/rpc/increment_portfolio_view`, {
+        method: 'POST',
+        headers: {
+          apikey: supabaseKey,
+          authorization: `Bearer ${supabaseKey}`,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ visitor_key: getVisitorKey(req) }),
+      });
+
+      const text = await response.text();
+      if (!response.ok) {
+        return sendJson(res, response.status, { error: text || response.statusText });
+      }
+
+      return sendJson(res, 200, { count: Number.parseInt(text, 10) || 0 });
     }
 
     if (url.pathname === '/api/lingo/localizeObject' && req.method === 'POST') {

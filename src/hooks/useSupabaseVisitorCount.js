@@ -7,10 +7,6 @@ export default function useVisitorCount() {
   const hasIncremented = useRef(false);
 
   useEffect(() => {
-    const VISITOR_KEY = 'visitor_timestamp_v2';
-    const EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000; // ~30 days
-
-    // Set up real-time listener for view count
     const fetchViewCount = async () => {
       try {
         const { data, error } = await supabase
@@ -37,54 +33,22 @@ export default function useVisitorCount() {
       }
     };
 
-    // Handle increment logic
     const handleIncrement = async () => {
-      // Prevent running twice in development
       if (hasIncremented.current) return;
-
-      const storedData = localStorage.getItem(VISITOR_KEY);
-      const currentTime = new Date().getTime();
-      let shouldIncrement = false;
+      hasIncremented.current = true;
 
       try {
-        if (!storedData) {
-          shouldIncrement = true;
-        } else {
-          const { timestamp } = JSON.parse(storedData);
-          if (currentTime - timestamp > EXPIRY_TIME) {
-            shouldIncrement = true;
-          }
+        const response = await fetch('/api/visitor-count', { method: 'POST' });
+        if (!response.ok) {
+          throw new Error(`Visitor count request failed: ${response.status}`);
         }
-      } catch {
-        shouldIncrement = true;
-      }
 
-      if (shouldIncrement) {
-        hasIncremented.current = true;
-
-        try {
-          // Increment view count in Supabase
-          const { data, error } = await supabase.rpc('increment_portfolio_view');
-
-          if (error) {
-            console.error('Error incrementing view count:', error);
-            await fetchViewCount();
-          } else {
-            // Update Local Storage after the write succeeds.
-            localStorage.setItem(VISITOR_KEY, JSON.stringify({
-              visited: true,
-              timestamp: currentTime
-            }));
-            setVisits(data);
-            setLoading(false);
-          }
-        } catch (error) {
-          console.error('Error updating visitor count:', error);
-          await fetchViewCount();
-        }
-      } else {
-        // Just fetch the current count if we're not incrementing
-        fetchViewCount();
+        const { count } = await response.json();
+        setVisits(count || 0);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error updating visitor count:', error);
+        await fetchViewCount();
       }
     };
 
